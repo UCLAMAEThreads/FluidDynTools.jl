@@ -2,8 +2,8 @@
 
 This repository contains tools for instruction of fluid dynamics.
 
-[![Build Status](https://github.com/UCLAMAEThreads/FluidDynTools/actions/workflows/CI.yml/badge.svg)](https://github.com/UCLAMAEThreads/FluidDynTools/actions/workflows/CI.yml)
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCLAMAEThreads/FluidDynTools/HEAD)
+[![Build Status](https://github.com/UCLAMAEThreads/FluidDynTools.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/UCLAMAEThreads/FluidDynTools.jl/actions/workflows/CI.yml)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/UCLAMAEThreads/FluidDynTools.jl/HEAD)
 
 
 To get started with jupyter, please do the following:
