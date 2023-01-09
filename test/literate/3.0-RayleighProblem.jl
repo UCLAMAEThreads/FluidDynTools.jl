@@ -14,7 +14,7 @@ Here, we review the concepts of
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using Plots
 using SpecialFunctions

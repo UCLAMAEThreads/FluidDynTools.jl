@@ -8,7 +8,7 @@ states and processes in isentropic quasi-1d steady compressible flow.
 
 # ### Set up the module
 #-
-using MAE150A
+using FluidDynTools
 using Gasdynamics1D
 #-
 using Plots

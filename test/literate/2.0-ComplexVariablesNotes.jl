@@ -7,7 +7,7 @@ them in Julia.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using Plots
 

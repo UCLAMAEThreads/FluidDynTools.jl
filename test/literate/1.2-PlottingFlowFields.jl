@@ -8,7 +8,7 @@ an airfoil again.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using ViscousFlow
 #-

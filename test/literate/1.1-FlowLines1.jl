@@ -11,7 +11,7 @@ and observe them in a pre-computed steady flow field.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using ViscousFlow
 #-

@@ -8,7 +8,7 @@ for dealing with **normal shock waves**.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 using Gasdynamics1D
 #-
 using Plots

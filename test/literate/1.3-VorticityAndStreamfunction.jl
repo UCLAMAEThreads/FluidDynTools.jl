@@ -22,7 +22,7 @@ and $(x0,y0)$ its center.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using ViscousFlow
 #-

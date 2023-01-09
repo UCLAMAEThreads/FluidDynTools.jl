@@ -7,7 +7,7 @@ through a constant-area duct with heat transfer, commonly known as **Rayleigh fl
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 using Gasdynamics1D
 #-
 using Plots

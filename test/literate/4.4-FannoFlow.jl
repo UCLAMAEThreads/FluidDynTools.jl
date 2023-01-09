@@ -7,7 +7,7 @@ This notebook demonstrates the use of tools for computing flow through a constan
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 using Gasdynamics1D
 #-
 using Plots

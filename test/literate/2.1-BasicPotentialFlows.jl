@@ -34,7 +34,7 @@ $$ u_\theta = \dfrac{1}{r} \dfrac{\partial \phi}{\partial \theta} = -\dfrac{\par
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using PotentialFlow
 using ViscousFlow

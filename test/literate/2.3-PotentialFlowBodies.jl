@@ -7,7 +7,7 @@ to generate potential flows past stationary obstacles.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using PotentialFlow
 using LinearAlgebra: diagm

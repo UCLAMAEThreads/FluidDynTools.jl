@@ -8,7 +8,7 @@ relative to the upstream stagnation pressure.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 using Gasdynamics1D
 #-
 using Plots

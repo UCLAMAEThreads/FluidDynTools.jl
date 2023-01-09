@@ -45,7 +45,7 @@ In the code below, you won't see these details shown, but they are all done behi
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using ViscousFlow
 using Plots

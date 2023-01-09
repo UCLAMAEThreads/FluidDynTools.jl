@@ -19,7 +19,7 @@ The flow is precomputed, so we will simply load it in.
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using ViscousFlow
 using Plots

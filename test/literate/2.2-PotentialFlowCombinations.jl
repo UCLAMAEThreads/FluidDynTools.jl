@@ -13,7 +13,7 @@ $$\nabla^2\phi_3 = \nabla^2(\phi_1 + \phi_2) = \nabla^2\phi_1 + \nabla^2\phi_2 =
 =#
 
 # ### Set up the module
-using MAE150A
+using FluidDynTools
 #-
 using PotentialFlow
 using ViscousFlow
