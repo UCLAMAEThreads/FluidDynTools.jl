@@ -1,4 +1,4 @@
-module MAE150A
+module FluidDynTools
 
   using Pkg, InteractiveUtils, IJulia
 
@@ -116,7 +116,7 @@ module MAE150A
   function tutorial_footer(; remove_homedir=true)
       display("text/markdown", """
       ## Appendix
-       This lesson is part of the MAE150.jl repository, found at: <https://github.com/jdeldre/MAE150A>.
+       This lesson is part of the FluidDynTools.jl repository, found at: <https://github.com/UCLAMAEThreads/FluidDynTools.jl>.
       """)
       display("text/markdown", "Computer Information:")
       vinfo = sprint(InteractiveUtils.versioninfo)
