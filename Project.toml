@@ -44,7 +44,7 @@ PotentialFlow = "0.2.6"
 Reexport = "0.2.0, 1.0"
 Requires = "1"
 Roots = "1"
-SpecialFunctions = "1"
+SpecialFunctions = "1, 2"
 ViscousFlow = "0.5.3"
 
 [extras]
