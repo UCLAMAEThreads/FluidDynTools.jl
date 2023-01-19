@@ -20,6 +20,7 @@ module FluidDynTools
 
   export save_ns_solution,load_ns_solution, get_flowfield,
         compute_trajectory, compute_trajectories,
+        compute_streakline,compute_streamline,
         field_along_trajectory, field_deriv_along_trajectory,
         convective_acceleration, mag, ddt, pressure,
         OseenVortex,

@@ -7,8 +7,8 @@ Calculate the trajectory of a particle with initial location `X₀`. The argumen
 integration time, and `Δt` is the time step size. The output is the solution
 structure for the `OrdinaryDiffEq` package.
 """
-compute_trajectory(u::ViscousFlow.Edges, sys::ViscousFlow.ILMSystem, X₀::Union{Vector{S},Vector{Vector{S}}},Tmax;Δt=DEFAULT_DT) where S <: Real =
-    compute_trajectory(ViscousFlow.interpolatable_field(u,sys.base_cache.g)...,X₀,Tmax;Δt=Δt)
+compute_trajectory(u::ViscousFlow.Edges, sys::ViscousFlow.ILMSystem, X₀::Union{Vector{S},Vector{Vector{S}}},Trange::Tuple;Δt=DEFAULT_DT) where S <: Real =
+    compute_trajectory(ViscousFlow.interpolatable_field(u,sys.base_cache.g)...,X₀,Trange;Δt=Δt)
 
 
 """
