@@ -93,7 +93,7 @@ traj_array = compute_trajectory(vel,sys,pts,Trange);
 # `traj_array[1]` contains the trajectory of particle 1, $\mathbf{r}_1(t)$.
 
 # Plot the trajectory, $\mathbf{r}_p(t)$, of each particle
-trajectories(traj_array,sys)
+trajectories(traj_array,sys,xlim=(-1,2))
 
 #=
 ## Particle acceleration and the material derivative of velocity
