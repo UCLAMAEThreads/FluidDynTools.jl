@@ -94,12 +94,30 @@ grad!(vel,ϕ,cache)
 plot(vel,cache)
 
 #=
+Is this velocity field diverence free (i.e. incompressible)? Let's see:
+=#
+divv = zeros_griddiv(cache)
+divergence!(divv,vel,cache)
+plot(divv,cache,levels=range(-4,4,length=30))
+
+#=
+Doesn't look like it is! Note that we explicitly set the contour levels here
+to get the range of values that we want. Sometimes we have to do this.
+=#
+
+#=
+Notice that we just took the divergence of the curl of $\phi$. We could have
+just taken the Laplacian of this to get the same thing. We have the
+`laplacian!` function for this. Let's try it:
+=#
+laplacian!(divv,ϕ,cache)
+plot(divv,cache,levels=range(-4,4,length=30))
+
+#=
 What will happen if we take a curl of this velocity field (to get the vorticity field)? Try it here
 and see. First, create blank curl-type data with `zeros_gridcurl(cache)`,
 then evaluate the curl on `vel`, and then plot it to see if it is as you expect.
 
 NOTE: When you plot the resulting vorticity field, you should probably explicitly
-set the contour levels to have reasonable magnitudes. For example, to
-set 30 contour levels between -1 and 1, use the argument `levels=range(-1,1,length=30)`
-in the `plot` function.
+set the contour levels to have reasonable magnitudes, as in the previous example.
 =#
