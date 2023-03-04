@@ -158,7 +158,9 @@ zedge1, zedge2 = b.zs[[kLE,kTE]]
 
 ## Vector to add to these edges. This determines the initial placement of the
 ## first vortex elements relative to the edges.
-Δz₀ = -3*im*Δt*exp(-im*b.α)
+## Δz₀ = -3*im*Δt*exp(-im*b.α)
+Δz₀ = [-3*Δt*exp(im*b.α),3*Δt*exp(im*b.α)]
+
 
 ## locations of initial blobs in circle plane
 ζblob = inverse_conftransform(Δz₀ .+ [zedge1, zedge2],b)
