@@ -31,7 +31,7 @@ module FluidDynTools
 
   repo_directory = joinpath(@__DIR__,"..")
 
-  proj_file = Pkg.project().path
+  #proj_file = Pkg.project().path
   #proj_dir = dirname(proj_file)
   #notebook_dir = joinpath(proj_dir,"notebook")
 
