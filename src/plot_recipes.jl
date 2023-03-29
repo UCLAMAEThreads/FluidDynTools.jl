@@ -6,34 +6,36 @@ using LaTeXStrings
 @userplot Trajectories
 
 @recipe function f(h::Trajectories)
-  if length(h.args) != 2
-      error("`trajectories` should be given two arguments.  Got: $(typeof(h.args))")
+  if length(h.args) > 2
+      error("`trajectories` should be given one or two arguments.  Got: $(typeof(h.args))")
   end
-  traj_array, sys = h.args
+  traj_array = h.args[1]
 
-  @series begin
-    sys.base_cache.bl
-  end
+  xguide := L"x"
+  yguide := L"y"
+  aspect_ratio := 1
+  size --> (700,400)
 
-  for traj in traj_array
+  if length(h.args) == 2
+    sys = h.args[2]
     @series begin
-      linewidth := 2
-      traj[1,:], traj[2,:]
+      sys.base_cache.bl
     end
   end
 
-  @series begin
-    xlims --> (-1,3)
-    ylims --> (-1,1)
-    xguide := L"x"
-    yguide := L"y"
-    title := "Particle trajectories"
-    aspect_ratio := 1
-    size --> (700,400)
-    ()
+  if isa(traj_array,ODESolution)
+    @series begin
+      linewidth := 2
+      traj_array[1,:], traj_array[2,:]
+    end
+  else
+    for traj in traj_array
+      @series begin
+        linewidth := 2
+        traj[1,:], traj[2,:]
+      end
+    end
   end
-
-
 end
 
 
