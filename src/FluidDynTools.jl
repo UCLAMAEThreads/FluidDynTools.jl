@@ -15,7 +15,7 @@ module FluidDynTools
   #@reexport using RecursiveArrayTools
   using Dierckx
   using Roots
-  using Conda
+  #using Conda
 
 
   export save_ns_solution,load_ns_solution, get_flowfield,
@@ -112,7 +112,7 @@ module FluidDynTools
   end
 
   _iswritable(file) = (uperm(file) >> 1) & 1 != 0
-  _hasmatplotlib() = haskey(Conda._installed_packages_dict(),"matplotlib")
+  #_hasmatplotlib() = haskey(Conda._installed_packages_dict(),"matplotlib")
 
   function tutorial_footer(; remove_homedir=true)
       display("text/markdown", """
