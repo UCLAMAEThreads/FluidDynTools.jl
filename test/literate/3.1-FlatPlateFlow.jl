@@ -124,7 +124,7 @@ by the time-like quantity $x/U_e(x)$ -- approximately the time required to trave
 from the leading edge to distance $x$ downstream. By convention, we stick
 a factor of 2 in this:
 =#
-delta(x,Ue,ν) = √(2*ν*x/Ue)
+δ(x,Ue,ν) = √(2*ν*x/Ue)
 
 #=
 Another observation:
