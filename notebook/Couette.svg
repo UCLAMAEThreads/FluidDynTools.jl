@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="462px" height="237px" viewBox="0 0 462 237" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Couette</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Couette" transform="translate(1.000000, 2.000000)">
+            <g id="Walls" transform="translate(0.000000, 34.000000)">
+                <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="0" y="0" width="460" height="40"></rect>
+                <rect id="Rectangle" stroke="#979797" fill="#D8D8D8" x="0" y="160" width="460" height="40"></rect>
+                <path d="M0,40 L460,40" id="Path" stroke="#000000" stroke-width="2"></path>
+                <path d="M0,160 L460,160" id="Path" stroke="#000000" stroke-width="2"></path>
+            </g>
+            <g id="Profile" transform="translate(120.000000, 73.500000)">
+                <g id="Arrows" transform="translate(-0.000000, 0.000000)" fill="#000000" fill-rule="nonzero">
+                    <path id="Path-2" d="M89.2402612,-7.12157554 L102.789729,0.5 L89.2402612,8.12157554 L88.2597388,6.37842446 L96.931,1.5 L0,1.5 L0,-0.5 L96.933,-0.5 L88.2597388,-5.37842446 L89.2402612,-7.12157554 Z"></path>
+                    <path id="Path-2" d="M75.2402612,7.87842446 L88.7897289,15.5 L75.2402612,23.1215755 L74.2597388,21.3784245 L82.932,16.5 L0,16.5 L0,14.5 L82.932,14.5 L74.2597388,9.62157554 L75.2402612,7.87842446 Z"></path>
+                    <path id="Path-2" d="M63.017605,22.8784245 L76.5670726,30.5 L63.017605,38.1215755 L62.0370825,36.3784245 L70.709,31.5 L-1.42108547e-14,31.5 L-1.42108547e-14,29.5 L70.709,29.5 L62.0370825,24.6215755 L63.017605,22.8784245 Z"></path>
+                    <path id="Path-2" d="M49.2402612,37.8784245 L62.7897289,45.5 L49.2402612,53.1215755 L48.2597388,51.3784245 L56.932,46.5 L0,46.5 L0,44.5 L56.934,44.5 L48.2597388,39.6215755 L49.2402612,37.8784245 Z"></path>
+                    <path id="Path-2" d="M36.68948,52.8784245 L50.2389476,60.5 L36.68948,68.1215755 L35.7089575,66.3784245 L44.381,61.5 L1.77635684e-14,61.5 L1.77635684e-14,59.5 L44.381,59.5 L35.7089575,54.6215755 L36.68948,52.8784245 Z"></path>
+                    <path id="Path-2" d="M26.1289331,67.8784245 L39.6784007,75.5 L26.1289331,83.1215755 L25.1484106,81.3784245 L33.82,76.5 L-1.0658141e-14,76.5 L-1.0658141e-14,74.5 L33.82,74.5 L25.1484106,69.6215755 L26.1289331,67.8784245 Z"></path>
+                    <path id="Path-2" d="M11.2402612,83.8784245 L24.7897289,91.5 L11.2402612,99.1215755 L10.2597388,97.3784245 L18.932,92.5 L0,92.5 L0,90.5 L18.932,90.5 L10.2597388,85.6215755 L11.2402612,83.8784245 Z"></path>
+                    <path id="Path-2" d="M0.24026124,98.8784245 L13.7897289,106.5 L0.24026124,114.121576 L-0.74026124,112.378424 L7.932,107.5 L0,107.5 L0,105.5 L7.932,105.5 L-0.74026124,100.621576 L0.24026124,98.8784245 Z"></path>
+                </g>
+                <path d="M0,120.5 L100,1" id="Path-4" stroke="#979797"></path>
+                <text id="u(y)" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal" fill="#000000">
+                    <tspan x="63" y="69.5">u(y)</tspan>
+                </text>
+            </g>
+            <text id="U" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal" fill="#000000">
+                <tspan x="191" y="60">U</tspan>
+            </text>
+            <g id="Axes" transform="translate(95.000000, 0.894531)">
+                <path id="Path-3" d="M25,-2.78972886 L32.6215755,10.7597388 L30.8784245,11.7402612 L26,3.068 L26,193.105469 L24,193.105469 L24,3.068 L19.1215755,11.7402612 L17.3784245,10.7597388 L25,-2.78972886 Z" fill="#979797" fill-rule="nonzero"></path>
+                <text id="y" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal" fill="#000000">
+                    <tspan x="0" y="19.1054688">y</tspan>
+                </text>
+            </g>
+            <g id="height" transform="translate(58.000000, 74.500000)" fill="#000000">
+                <path id="Path-5" d="M22,-0.5 L26.5,8.5 L22.5,8.5 L22.5,111 L26.5,111 L22,120 L17.5,111 L21.5,111 L21.5,8.5 L17.5,8.5 L22,-0.5 Z" fill-rule="nonzero"></path>
+                <text id="H" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal">
+                    <tspan x="0" y="65.5">H</tspan>
+                </text>
+            </g>
+        </g>
+    </g>
+</svg>
