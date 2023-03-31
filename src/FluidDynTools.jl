@@ -33,7 +33,8 @@ module FluidDynTools
         convective_acceleration, mag, ddt, pressure,
         OseenVortex,
         complexgrid, vortex_patch, dotproduct,equilateraltriangle,circle,
-        simulate_flow,surface_fluid_velocity,falknerskan
+        simulate_flow,surface_fluid_velocity,falknerskan,
+        setup_notebooks
         #add_arrow!,add_arrows!
 
 
@@ -46,6 +47,7 @@ module FluidDynTools
   include("quantities.jl")
   include("fluidstatics.jl")
   include("pipeflow.jl")
+  include("fileio.jl")
 
   include("plot_recipes.jl")
 
