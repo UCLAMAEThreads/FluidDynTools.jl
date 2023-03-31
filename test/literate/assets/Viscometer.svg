@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="360px" height="319px" viewBox="0 0 360 319" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Viscometer</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Viscometer" transform="translate(0.000000, -6.000000)">
+            <circle id="Oval" fill="#D8D8D8" cx="145" cy="180" r="145"></circle>
+            <circle id="Oval" stroke="#000000" fill="#FFFFFF" cx="145" cy="180" r="120"></circle>
+            <circle id="Oval" stroke="#000000" fill="#D8D8D8" cx="145" cy="180" r="100"></circle>
+            <text id="Ω" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal" fill="#000000">
+                <tspan x="137" y="129">Ω</tspan>
+            </text>
+            <path id="Path-6" d="M145,139 C156.629808,139 167.07244,144.368469 174.911313,153.423111 C181.813144,161.39538 186,171.59819 186,180 L186,180 L184,180 C184,172.104054 180.000067,162.356751 173.399234,154.732163 C165.920659,146.093699 156.012503,141 145,141 C127.993702,141 114.158125,151.313217 108.513214,166.394302 L114.22112,167.352038 L105,180 L100.414302,165.034327 L106.505775,166.057057 C112.345931,150.022278 126.993388,139 145,139 Z" fill="#000000" fill-rule="nonzero"></path>
+            <text id="stationary-outer-wal" font-family="MyriadPro-Regular, Myriad Pro" font-size="24" font-weight="normal" fill="#000000">
+                <tspan x="260" y="100">stationary</tspan>
+                <tspan x="260" y="124">outer wall</tspan>
+            </text>
+            <path id="Path-7" d="M145,18.4801356 L149.935788,27.2548694 L149.064212,27.7451306 L145.5,21.408 L145.5,80 L144.5,80 L144.5,21.408 L140.935788,27.7451306 L140.064212,27.2548694 L145,18.4801356 Z" fill="#979797" fill-rule="nonzero"></path>
+            <text id="y" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal" fill="#000000">
+                <tspan x="125" y="18">y</tspan>
+            </text>
+            <path d="M145,60 L101.354492,80" id="Path-8" stroke="#000000"></path>
+            <path id="Path-9" d="M108.609362,75.0642122 L109.099623,75.9357878 L102.761,79.5 L145,79.5 L145,80.5 L102.763,80.5 L109.099623,84.0642122 L108.609362,84.9357878 L99.8346278,80 L108.609362,75.0642122 Z" fill="#000000" fill-rule="nonzero"></path>
+            <path id="Path-9" d="M137.754869,62.0642122 L138.245131,62.9357878 L131.906,66.5 L145,66.5 L145,67.5 L131.908,67.5 L138.245131,71.0642122 L137.754869,71.9357878 L128.980136,67 L137.754869,62.0642122 Z" fill="#000000" fill-rule="nonzero"></path>
+            <path id="Path-9" d="M123.073229,69.0642122 L123.56349,69.9357878 L117.228,73.5 L145,73.5 L145,74.5 L117.228,74.5 L123.56349,78.0642122 L123.073229,78.9357878 L114.298495,74 L123.073229,69.0642122 Z" fill="#000000" fill-rule="nonzero"></path>
+            <path id="Path-10" d="M237.745131,175.064212 L246.519864,180 L237.745131,184.935788 L237.254869,184.064212 L243.59,180.5 L214.966797,180.5 L214.966797,179.5 L243.59,179.5 L237.254869,175.935788 L237.745131,175.064212 Z" fill="#000000" fill-rule="nonzero"></path>
+            <path id="Path-11" d="M272.254869,175.064212 L272.745131,175.935788 L266.408,179.5 L305,179.5 L305,180.5 L266.408,180.5 L272.745131,184.064212 L272.254869,184.935788 L263.480136,180 L272.254869,175.064212 Z" fill="#000000" fill-rule="nonzero"></path>
+            <text id="H" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal" fill="#000000">
+                <tspan x="277" y="174">H</tspan>
+            </text>
+            <text id="R" font-family="MyriadPro-It, Myriad Pro" font-size="24" font-style="italic" font-weight="normal" fill="#000000">
+                <tspan x="165" y="229">R</tspan>
+            </text>
+            <path id="Path-12" d="M145.32741,179.622108 L219.338,243.746 L216.883852,236.903536 L217.825109,236.565846 L221.224862,246.042113 L211.360999,244.026629 L211.561193,243.046873 L218.684,244.502 L144.67259,180.377892 L145.32741,179.622108 Z" fill="#000000" fill-rule="nonzero"></path>
+            <path d="M140.753906,180 L150.037109,180" id="Path-13" stroke="#979797"></path>
+            <path d="M145.5,175.144531 L145.5,184.998047" id="Path-14" stroke="#979797"></path>
+        </g>
+    </g>
+</svg>

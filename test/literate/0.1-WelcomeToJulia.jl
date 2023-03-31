@@ -8,11 +8,24 @@ the [Julia](https://julialang.org/) programming language.
 =#
 #-
 #=
+First, note that the notebooks in this package are probably read-only for you, so
+you cannot save it if you make changes. (This is for good reason.) If you would
+like to save your changes, then go up to the File menu in Jupyter and click
+"Make a copy..." and then do your work on the copy.
+=#
+#-
+#=
 ### Basics on Jupyter notebook with Julia
 First try a simple mathematical operation. To run a cell, press `SHIFT+RETURN`
 (or `SHIFT+ENTER`). You can also press the `Run` button above.
 =#
 2+2
+
+#=
+If you don't want to see the output of a calculation, then you can suppress it
+with the semicolon `;`
+=#
+a = 2+2;
 
 #=
 Here is an example of an array of values, specified as a range:
@@ -49,7 +62,7 @@ using Plots
 #=
 Now let's plot our data.
 
-Note that it takes a few seconds (~15) to run this plot function for the first
+Note that it takes a few seconds to run this plot function for the first
 time, since it does a little compiling on the fly. (Julia operates on a 'just-in-time'
 compiling approach to generate much faster codes. As a result, this function is
 basically instantaneous the next time you run it.
@@ -59,7 +72,32 @@ plot(x,y)
 #=
 That's the basic plot. Let's make it look better:
 =#
-ps = plot(x,y,xlims=(0,5),ylims=(-1,1),legend=false,xguide="x",yguide="y")
+plot(x,y,xlims=(0,5),ylims=(-1,1),legend=false,xguide="x",yguide="y")
+
+
+
+#=
+To make the labels on the axes look a little bit more professional, we can
+use the `LaTeXStrings` package
+=#
+using LaTeXStrings
+#=
+Then, each of the labels can be prefixed with `L`:
+=#
+plot(x,y,xlims=(0,5),ylims=(-1,1),legend=false,xguide=L"x",yguide=L"y")
+
+#=
+Suppose we wish to plot multiple things. Then we use `plot!` on every additional
+plot. Also, let's save the plot for later use (saving), by naming it `ps`.
+=#
+y2 = cos.(x)
+ps = plot(x,y,xlims=(0,5),ylims=(-1,1),label=L"sin($x$)",legend=true,xguide=L"x",yguide=L"y")
+plot!(ps,x,y2,label=L"cos($x$)")
+#=
+Note: The $$ around the `x` in the labels above renders this in math (italic) font,
+but keeps the rest of the text in roman (upright) font.
+=#
+#-
 
 #=
 If we want to save that plot, e.g., for homework, then we would run this to save
@@ -68,12 +106,6 @@ but you should end it with ".pdf".
 =#
 savefig(ps,"myfigure.pdf")
 
-#=
-Where is this file? you can see the directory contents by clicking the "Open..."
-in the File menu above. The figure file is there, and you can download it to your
-own computer by selecting the file and clicking the "Download" option at the top.
-=#
-#-
 #=
 ### Special functions
 Sometimes, we might need a *special function* for plotting. For example, the
@@ -88,7 +120,7 @@ using SpecialFunctions
 f(x) = besselj(2,x)
 #-
 x = 0:0.01:20;
-plot(x,f.(x),grid=:true,xlims=(0,Inf),ylim=(-1,1),xguide="x",yguide="J2(x)",legend=:false)
+plot(x,f.(x),grid=:true,xlims=(0,Inf),ylim=(-1,1),xguide=L"x",yguide=L"J_2(x)",legend=:false)
 
 #=
 ### Further help on Julia
