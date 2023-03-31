@@ -10,7 +10,7 @@ We will also introduce some syntax we will use in this notebook and those that f
 =#
 
 # ### Set up the module
-using MAE103
+using FluidDynTools
 
 #=
 We will generally focus on SI units, and these will be the default system

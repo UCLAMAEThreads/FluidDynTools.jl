@@ -7,7 +7,7 @@ flat surfaces immersed in static fluids
 =#
 
 # ### Set up the module
-using MAE103
+using FluidDynTools
 #-
 using Plots
 
@@ -41,7 +41,7 @@ $$F_R = \gamma h_c A$$
 (The atmospheric pressure contributes nothing in this problem, since it
 acts the same on both sides.)
 =#
-A = Area(Circle,d/2)
+A = Area(CircularPlate,d/2)
 FR = Force(SpecificWeight(Water)*A*hc)
 
 #=
@@ -60,7 +60,7 @@ yc = Length(hc/sin(Θ))
 #=
 and $I_{xc}$ we can compute with a handy function:
 =#
-Ixc = SecondAreaMomentX(Circle,d/2)
+Ixc = SecondAreaMomentX(CircularPlate,d/2)
 
 #=
 Now put them together to get the center of pressure

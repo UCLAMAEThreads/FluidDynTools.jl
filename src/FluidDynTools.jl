@@ -17,6 +17,14 @@ module FluidDynTools
   using Roots
   #using Conda
 
+  @reexport using ThermofluidQuantities
+  import ThermofluidQuantities: Unitful
+
+  @reexport using Gasdynamics1D
+
+  @reexport using Statistics
+
+
 
   export save_ns_solution,load_ns_solution, get_flowfield,
         compute_trajectory, compute_trajectories,
@@ -34,6 +42,10 @@ module FluidDynTools
   #proj_file = Pkg.project().path
   #proj_dir = dirname(proj_file)
   #notebook_dir = joinpath(proj_dir,"notebook")
+
+  include("quantities.jl")
+  include("fluidstatics.jl")
+  include("pipeflow.jl")
 
   include("plot_recipes.jl")
 

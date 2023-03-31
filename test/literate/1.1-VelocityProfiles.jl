@@ -10,7 +10,7 @@ mechanics: the **velocity profile**.
 #-
 
 # ### Set up the module
-using MAE103
+using FluidDynTools
 #-
 using Plots
 

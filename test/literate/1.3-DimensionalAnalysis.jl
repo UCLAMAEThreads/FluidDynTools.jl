@@ -13,7 +13,7 @@ $$\Delta p = f(D,\rho,\omega,Q)$$
 =#
 
 # ### Set up the module
-using MAE103
+using FluidDynTools
 #-
 using Plots
 using Serialization # to read/write data

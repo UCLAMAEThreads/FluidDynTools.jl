@@ -6,7 +6,7 @@ In this notebook, we will learn some basic ways to calculate and plot streamline
 =#
 
 # ### Set up the module
-using MAE103
+using FluidDynTools
 #-
 using Plots
 

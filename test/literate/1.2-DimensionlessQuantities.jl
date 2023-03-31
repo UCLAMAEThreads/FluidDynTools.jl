@@ -8,7 +8,7 @@ and the physical significance of this.
 =#
 
 # ### Set up the module
-using MAE103
+using FluidDynTools
 #-
 using Plots
 

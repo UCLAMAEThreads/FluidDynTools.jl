@@ -10,6 +10,13 @@ Manifest.toml
 .ipynb_checkpoints
 *.ipynb
 todo
+test/*.jpg
+test/*.svg
+test/*.jld2
+test/*.jls
+notebook/*.jpg
+notebook/*.svg
+notebook/*.jls
 
 # Documentation
 docs/build/

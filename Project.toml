@@ -26,7 +26,10 @@ RecursiveArrayTools = "731186ca-8d62-57ce-b412-fbd966d074cd"
 Reexport = "189a3867-3050-52da-a836-e630ba90ab69"
 Requires = "ae029012-a4dd-5104-9daa-d747884805df"
 Roots = "f2b01f46-fcfa-551c-844a-d8ac1e96c665"
+Serialization = "9e88b42a-f829-5b0c-bbe9-9e923198166b"
 SpecialFunctions = "276daf66-3868-5448-9aa4-cd146d93841b"
+Statistics = "10745b16-79ce-11e8-11f9-7d13ad32a3b2"
+ThermofluidQuantities = "8e558ecf-e13e-4796-9812-ac12e4724222"
 ViscousFlow = "103da179-b3e4-57c1-99a4-586354eb2c5a"
 
 [compat]

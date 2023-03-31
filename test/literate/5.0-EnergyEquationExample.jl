@@ -10,7 +10,7 @@ in order to take advantage of the useful tools that come with them.
 =#
 
 # ### Set up the module
-using MAE103
+using FluidDynTools
 
 #=
 ## Example: Find the flow rate
