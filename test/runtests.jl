@@ -1,18 +1,10 @@
 using FluidDynTools
-#using ViscousFlow
 using Test
 using Literate
-#using SafeTestsets
 
 const GROUP = get(ENV, "GROUP", "All")
 
-const err = ArgumentError("""
-              Use `@safetestset` like the following:
-              @safetestset "Benchmark Tests" begin include("benchmark_tests.jl") end
-              @safetestset BenchmarkTests = "Benchmark Tests" begin include("benchmark_tests.jl") end
-              """)
 macro mysafetestset(args...)
-    #length(args) != 2 && throw(err)
     name, expr = args
     quote
         ex = quote
@@ -21,10 +13,10 @@ macro mysafetestset(args...)
           mod = gensym(name_str)
           ex2 = quote
               @eval module $mod
-              using Test
-              @testset $name_str $expr_str
-            end
-            nothing
+                      using Test
+                      @testset $name_str $expr_str
+                    end
+              nothing
           end
           eval(ex2)
         end
