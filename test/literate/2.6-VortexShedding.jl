@@ -20,6 +20,7 @@ using FluidDynTools
 #-
 using PotentialFlow
 using PotentialFlow.Bodies
+import PotentialFlow: Polygon
 #-
 using Plots
 
@@ -254,6 +255,6 @@ Here, we are approximately computing
 
 $$f = -\rho dP/dt$$
 =#
-force = -diff(imp)/Δt
-plot(time,2*imag.(force),label="C_L",xlim=(0,5),ylim=(0,2),legend=true)
-plot!(time,2*real.(force),label="C_D")
+fhist = -diff(imp)/Δt
+plot(time,2*imag.(fhist),label="C_L",xlim=(0,5),ylim=(0,2),legend=true)
+plot!(time,2*real.(fhist),label="C_D")

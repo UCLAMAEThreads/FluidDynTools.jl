@@ -68,7 +68,7 @@ function simulate_flow(unit_sources, Δslist, n̂, other_elements; tracer_start 
 
     # compute other stuff, like surface velocity, pressure, and tracer trajectories
 
-    us = surface_velocity(targets, sources, other_elements, n̂, Δslist)
+    us = surface_fluid_velocity(targets, sources, other_elements, n̂, Δslist)
 
     Cp = 1 .- dotproduct.(us,us) #/dotproduct(U∞,U∞)
 
@@ -78,7 +78,7 @@ function simulate_flow(unit_sources, Δslist, n̂, other_elements; tracer_start 
     sources, us, Cp, tx, ty
 end
 
-function surface_velocity(targets,sources,other_elements,n̂,Δslist)
+function surface_fluid_velocity(targets,sources,other_elements,n̂,Δslist)
     us = induce_velocity(targets, (other_elements,sources), 0)
     for (i,(ni,Δsi,source)) in enumerate(zip(n̂,Δslist,sources))
         us[i] -= 0.5*im*source.S*ni/Δsi

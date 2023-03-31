@@ -30,8 +30,8 @@ using Plots
 Let's first define the velocity field. Note that each function must contain
 arguments for $x$, $y$, and $t$, even if it is not strictly a function of these.
 =#
-u(x,y,t) = 1.0
-v(x,y,t) = cos(2π*(x-t))
+uvel(x,y,t) = 1.0
+vvel(x,y,t) = cos(2π*(x-t))
 
 #=
 This velocity field is fairly simple, but it has two key attributes that make it
@@ -47,7 +47,7 @@ We evaluate the streamlines at time $t = 0$:
 =#
 rake = [[0.0,-1.0], [0.0,-0.5], [0.0,0.0], [0.0,0.5], [0.0,1.0]];
 t = 0.0
-stream = compute_streamline(u,v,rake,(0,4),t);
+stream = compute_streamline(uvel,vvel,rake,(0,4),t);
 
 #=
 Plot the streamlines:
@@ -60,7 +60,7 @@ So the velocity field generally progresses from left to right, but exhibits a wa
 
 #=
 To compute the streakline, we make use of the `compute_streakline` function,
-which accepts the two functions `u` and `v` as arguments, as well as an injection point `y`
+which accepts the two functions `uvel` and `vvel` as arguments, as well as an injection point `y`
 and a time `t` at which we want to look at the streakline. It returns the coordinates
 of each point on the streakline.
 
@@ -71,7 +71,7 @@ streakline longer, how should we change `τmin`?
 
 y = [0.0,0.0]
 t = 0.0
-xstreak, ystreak = compute_streakline(u,v,y,t);
+xstreak, ystreak = compute_streakline(uvel,vvel,y,t);
 
 #=
 Let's plot the streakline. The use of `ratio=1` ensures that we get the
@@ -90,9 +90,9 @@ time $t$, and we only keep the last position of each pathline.
 
 Let's do this for three particles.
 =#
-traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
-traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
-traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
+traj1 = compute_trajectory(uvel,vvel,y,(-2,t),Δt=0.01)
+traj2 = compute_trajectory(uvel,vvel,y,(-1.75,t),Δt=0.01)
+traj3 = compute_trajectory(uvel,vvel,y,(-1.5,t),Δt=0.01)
 trajectories!(traj1,label="Particle path τ = -2")
 trajectories!(traj2,label="Particle path τ = -1.75")
 trajectories!(traj3,label="Particle path τ = -1.5")
@@ -104,10 +104,10 @@ an unsteady flow field, let's make a movie of this over a range of time:
 =#
 
 @gif for t in range(-1.5,4,length=40)
-    xstreak, ystreak = compute_streakline(u,v,y,t,τmin=-4,Δttraj=0.01)
-    traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
-    traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
-    traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
+    xstreak, ystreak = compute_streakline(uvel,vvel,y,t,τmin=-4,Δttraj=0.01)
+    traj1 = compute_trajectory(uvel,vvel,y,(-2,t),Δt=0.01)
+    traj2 = compute_trajectory(uvel,vvel,y,(-1.75,t),Δt=0.01)
+    traj3 = compute_trajectory(uvel,vvel,y,(-1.5,t),Δt=0.01)
 
     plot(xstreak,ystreak,ratio=1,legend=:bottomleft,label="Streakline",xlim=(-5,8),ylim=(-6,6))
     scatter!([y[1]],[y[2]],label="Injection point")

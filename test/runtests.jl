@@ -1,9 +1,40 @@
 using FluidDynTools
-using ViscousFlow
+#using ViscousFlow
 using Test
 using Literate
+#using SafeTestsets
+
+const GROUP = get(ENV, "GROUP", "All")
+
+const err = ArgumentError("""
+              Use `@safetestset` like the following:
+              @safetestset "Benchmark Tests" begin include("benchmark_tests.jl") end
+              @safetestset BenchmarkTests = "Benchmark Tests" begin include("benchmark_tests.jl") end
+              """)
+macro mysafetestset(args...)
+    #length(args) != 2 && throw(err)
+    name, expr = args
+    quote
+        ex = quote
+          name_str = $$(QuoteNode(name))
+          expr_str = $$(QuoteNode(expr))
+          mod = gensym(name_str)
+          ex2 = quote
+              @eval module $mod
+              using Test
+              @testset $name_str $expr_str
+            end
+            nothing
+          end
+          eval(ex2)
+        end
+        eval(ex)
+    end
+end
 
 #include("trajectories.jl")
+
+ENV["GKSwstype"] = "nul" # removes GKS warnings during plotting
 
 outputdir = "../notebook"
 litdir = "./literate"
@@ -12,6 +43,7 @@ for (root, dirs, files) in walkdir(litdir)
     if splitpath(root)[end] == "assets"
         for file in files
             cp(joinpath(root, file),joinpath(outputdir,file),force=true)
+            cp(joinpath(root, file),joinpath(".",file),force=true)
         end
     end
 end
@@ -31,9 +63,25 @@ function replace_includes(str)
     return str
 end
 
-for (root, dirs, files) in walkdir(litdir)
+
+if GROUP == "All" || GROUP == "Literate"
+  for (root, dirs, files) in walkdir(litdir)
     for file in files
-        #endswith(file,".jl") && startswith(file,"2.6") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
-        endswith(file,".jl") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
+      global file_str = "$file"
+      global body = :(begin include(joinpath($root,$file)) end)
+      endswith(file,".jl") && @mysafetestset file_str body
     end
+  end
+end
+
+
+if GROUP == "Notebooks"
+
+  for (root, dirs, files) in walkdir(litdir)
+    for file in files
+      #endswith(file,".jl") && startswith(file,"2.6") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
+      endswith(file,".jl") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
+    end
+  end
+
 end

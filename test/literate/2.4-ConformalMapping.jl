@@ -25,6 +25,7 @@ using FluidDynTools
 #-
 using PotentialFlow
 using PotentialFlow.Bodies
+import PotentialFlow: Polygon
 #-
 using Plots
 

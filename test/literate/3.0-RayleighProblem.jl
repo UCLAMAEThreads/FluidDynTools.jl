@@ -60,7 +60,7 @@ matter what the constant of proportionality is. By convention, we
 define the thickness as $\delta(t) = \sqrt{4 \nu t}$
 =#
 
-δ(t;ν = 1) = sqrt(4*ν*t)
+delta(t;ν = 1) = sqrt(4*ν*t)
 
 #=
 The exact solution for this problem can be derived using a *similarity transform*.
@@ -93,10 +93,11 @@ and $F(\infty) = 0$. The solution is
 
 $$ F(\eta) = 1 - \mathrm{erf}(\eta) $$
 
-where $\mathrm{erf}$ is the error function.
+where $\mathrm{erf}$ is the error function. We call it `Ffcn` here since
+`F` is too simple of a function name.
 =#
 
-F(η) = 1 - erf(η)
+Ffcn(η) = 1 - erf(η)
 #-
 
 #=
@@ -104,7 +105,7 @@ Let's plot this. It's a dimensionless profile, so we put $\eta$ on the
 vertical axis:
 =#
 η = range(0.0,5.0,length=501)
-plot(F.(η),η,xlims=(0,2),ylims=(0,5),xguide=L"F(\eta)",yguide=L"\eta")
+plot(Ffcn.(η),η,xlims=(0,2),ylims=(0,5),xguide=L"F(\eta)",yguide=L"\eta")
 
 #=
 ### Back to the actual velocity
@@ -113,7 +114,7 @@ now that we have $F$
 
 $$ u(y,t) = U (1 - \mathrm{erf}(y/\sqrt{4\nu t})) $$
 =#
-u(y,t;U=1,ν=1) = U*F(y/δ(t,ν=ν))
+uvel(y,t;U=1,ν=1) = U*Ffcn(y/delta(t,ν=ν))
 
 #=
 The velocity is time dependent, so we need to plot this at different times.
@@ -123,9 +124,9 @@ y = range(0,5,length=501)
 timerange = range(0.001,2,length=81)
 
 @gif for t in timerange
-    plot(u.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"u/U",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
-    hline!([δ(t)],linecolor=:black,linewidth=1,label=L"\delta")
-    vline!([F(1)],label="",linecolor=:black,linewidth=0.5,linestyle=:dash,legend=:true)
+    plot(uvel.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"u/U",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
+    hline!([delta(t)],linecolor=:black,linewidth=1,label=L"\delta")
+    vline!([Ffcn(1)],label="",linecolor=:black,linewidth=0.5,linestyle=:dash,legend=:true)
 end
 
 #=
@@ -136,12 +137,12 @@ as the layer grows!
 Another way to understand this. Let's evaluate velocity at $y = 3$ at $t = 1$.
 It is very small, about 3 percent of the wall velocity ($U=1$)
 =#
-u(3,1)
+uvel(3,1)
 
 #=
 Now let's evaluate it at $t = 10$. It's now about half of the wall speed ($U=1$):
 =#
-u(3,10)
+uvel(3,10)
 
 #=
 ### Vorticity
@@ -155,13 +156,13 @@ smoothed out into a Gaussian (bell curve) shape, maximum at the wall. In
 other words, vorticity is *generated* at $t = 0$ at the wall, and then
 spread upward by diffusion.
 =#
-Fp(η) = 2/sqrt(π)*exp(-η^2)
-ω(y,t;U=1,ν=1) = U/δ(t,ν=ν)*Fp(y/δ(t,ν=ν))
+dF(η) = 2/sqrt(π)*exp(-η^2)
+vort(y,t;U=1,ν=1) = U/delta(t,ν=ν)*dF(y/delta(t,ν=ν))
 
 #-
 @gif for t in timerange
-    plot(ω.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"\omega",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
-    hline!([δ(t)],linecolor=:black,linewidth=1,label=L"\delta")
+    plot(vort.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"\omega",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
+    hline!([delta(t)],linecolor=:black,linewidth=1,label=L"\delta")
 end
 
 #=

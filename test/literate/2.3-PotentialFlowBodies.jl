@@ -189,9 +189,9 @@ plot!(sources, markersize = 2, color = :RdBu)
 Let's calculate the pressure distribution the surface of the object. We will need
 the fluid velocity on the surface for this. To calculate this, we simply evaluate it at
 all of the source locations. However, the source's effect on itself needs to be added
-in explicitly. There is a function `surface_velocity` to do that work for us.
+in explicitly. There is a function `surface_fluid_velocity` to do that work for us.
 =#
-us = surface_velocity(targets,sources,fs,n̂,Δslist);
+us = surface_fluid_velocity(targets,sources,fs,n̂,Δslist);
 
 #=
 Now, the pressure can be obtained by applying the Bernoulli equation between two points,

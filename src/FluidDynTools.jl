@@ -25,7 +25,7 @@ module FluidDynTools
         convective_acceleration, mag, ddt, pressure,
         OseenVortex,
         complexgrid, vortex_patch, dotproduct,equilateraltriangle,circle,
-        simulate_flow,surface_velocity,falknerskan
+        simulate_flow,surface_fluid_velocity,falknerskan
         #add_arrow!,add_arrows!
 
 
@@ -98,7 +98,6 @@ module FluidDynTools
 
     @require PotentialFlow="73af2aaf-3f58-5b29-82a9-435ecf827f5b" begin
       import PotentialFlow: induce_velocity, Vortex.Point
-
 
       include("potentialflow/utils.jl")
       include("potentialflow/trajectories.jl")

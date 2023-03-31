@@ -52,7 +52,7 @@ Let's try a combination of a uniform flow at 0 degrees and a source at the origi
 # The uniform flow
 U∞ = 1.0  ## speed
 α = 0.0 ## angle in radians
-f = Freestreams.Freestream(U∞*exp(im*α))
+fs = Freestreams.Freestream(U∞*exp(im*α))
 
 # The source
 zs = 0.0+im*0.0  ## location of the source
@@ -63,7 +63,7 @@ s = Source.Point(zs,Q)
 We will add these, but take some care to use our rotation trick on the branch cut
 of the source, so that it is along the $+x$ axis.
 =#
-ψ .= ViscousFlow.streamfunction(f,cache) + ViscousFlow.streamfunction(s,cache,angle=0)
+ψ .= ViscousFlow.streamfunction(fs,cache) + ViscousFlow.streamfunction(s,cache,angle=0)
 p = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Uniform flow + source")
 
 #=

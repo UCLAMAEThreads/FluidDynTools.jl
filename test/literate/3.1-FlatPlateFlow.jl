@@ -22,6 +22,7 @@ The flow is precomputed, so we will simply load it in.
 using FluidDynTools
 #-
 using ViscousFlow
+import ViscousFlow: force
 using Plots
 
 
@@ -123,7 +124,7 @@ by the time-like quantity $x/U_e(x)$ -- approximately the time required to trave
 from the leading edge to distance $x$ downstream. By convention, we stick
 a factor of 2 in this:
 =#
-δ(x,Ue,ν) = √(2*ν*x/Ue)
+delta(x,Ue,ν) = √(2*ν*x/Ue)
 
 #=
 Another observation:
