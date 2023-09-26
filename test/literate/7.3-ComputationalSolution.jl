@@ -95,24 +95,29 @@ and distributes points around the body.
 body = Rectangle(0.5,0.25,Δs)
 
 #=
-We place the body at a desired location and orientation with the `RigidTransform`
-function. This function creates an operator `T` that acts in-place on the body:
-after the operation is applied, `body` is transformed to the correct location/orientation.
+We place the body at a desired location and orientation by setting a
+joint between the body and the inertial coordinate system, and
+then transforming the body into the inertial system.
 =#
-cent = (0.0,0.0) # center of body
-α = 45π/180 # angle
-T = RigidTransform(cent,α)
-T(body) # transform the body to the current configuration
+cent = [0.0,0.0] # center of joint with respect to inertial system
+α = 45π/180 # angle of joint with respect to inertial system
+X = MotionTransform(cent,α)
+joint = Joint(X)
+m = RigidBodyMotion(joint,body)
+
+#=
+Now update the body to its desired configuration.
+=#
+x = init_motion_state(body,m)
+update_body!(body,x,m)
 
 # Let's plot it just to make sure
 plot(body,xlim=xlim,ylim=ylim)
 
 #=
 ### Construct the system structure
-This step is like the previous notebook, but now we also provide the body and
-the freestream:
 =#
-sys = viscousflow_system(g,body,phys_params=my_params);
+sys = viscousflow_system(g,body,phys_params=my_params,motions=m);
 
 #=
 ### Initialize
@@ -158,7 +163,7 @@ end every 5
 To do this, we supply the solution history `sol`, the system `sys`, and the index
 of the body (1).
 =#
-fx, fy = force(sol,sys,1);
+mom, fx, fy = force(sol,sys,1);
 
 #=
 Plot the histories. Note that we are actually plotting the drag and lift
