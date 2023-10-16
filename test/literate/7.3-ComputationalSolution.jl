@@ -48,6 +48,7 @@ In the code below, you won't see these details shown, but they are all done behi
 using FluidDynTools
 #-
 using ViscousFlow
+using Statistics
 using Plots
 
 
@@ -181,6 +182,6 @@ plot(sol.t,2*fy,xlim=(0,Inf),ylim=(-6,6),xlabel="Convective time",ylabel="\$C_L\
 )
 
 # The mean drag and lift coefficients are
-meanCD = GridUtilities.mean(2*fx)
+meanCD = Statistics.mean(2*fx)
 #-
-meanCL = GridUtilities.mean(2*fy)
+meanCL = Statistics.mean(2*fy)
