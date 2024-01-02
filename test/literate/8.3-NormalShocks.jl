@@ -9,9 +9,8 @@ for dealing with **normal shock waves**.
 
 # ### Set up the module
 using FluidDynTools
-using Gasdynamics1D
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### General use of normal shock relations
@@ -36,7 +35,7 @@ for M in M1
     push!(pratio,ustrip(PressureRatio(MachNumber(M),NormalShock)))
 end
 #-
-plot(M1,s2,xlim=(1,3),ylim=(0,400),xlabel="Mach number",ylabel="Entropy increase (J/kgK)")
+#!jl plot(M1,s2,xlim=(1,3),ylim=(0,400),xlabel="Mach number",ylabel="Entropy increase (J/kgK)")
 # Not surprisingly, the entropy jump gets bigger as the Mach number increases
 
 #=

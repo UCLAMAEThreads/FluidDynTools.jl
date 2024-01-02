@@ -89,7 +89,7 @@ equation.
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Generate the velocity profile and other solution features
@@ -131,7 +131,7 @@ $$\dfrac{\theta(x)}{x} = \dfrac{0.664}{\sqrt{Re_x}} $$
 #=
 #### Let's plot the profile
 =#
-plot(u,η,xlim=(0,2),ylim=(0,maximum(η)),xlabel=L"F'(\eta) = u/U_e",ylabel=L"\eta = y/\delta(x)")
+#!jl plot(u,η,xlim=(0,2),ylim=(0,maximum(η)),xlabel=L"F'(\eta) = u/U_e",ylabel=L"\eta = y/\delta(x)")
 
 #=
 #### Drag force

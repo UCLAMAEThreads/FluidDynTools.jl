@@ -15,7 +15,7 @@ using FluidDynTools
 #-
 using ViscousFlow
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Load the flow from file
@@ -93,7 +93,7 @@ traj_array = compute_trajectory(vel,sys,pts,Trange);
 # `traj_array[1]` contains the trajectory of particle 1, $\mathbf{r}_1(t)$.
 
 # Plot the trajectory, $\mathbf{r}_p(t)$, of each particle
-trajectories(traj_array,sys,xlim=(-1,2))
+#!jl trajectories(traj_array,sys,xlim=(-1,2))
 
 #=
 ## Particle acceleration and the material derivative of velocity
@@ -145,7 +145,7 @@ Plot the velocity components as a function of the $x$ component of the trajector
 This allows us to see how these components change as the particle encounters the airfoil.
 We also plot the particle's trajectory for reference.
 =#
-fieldtrajectory(traj,vel,sys,fieldlabel="Velocity")
+#!jl fieldtrajectory(traj,vel,sys,fieldlabel="Velocity")
 
 #=
 Notice how the particle's u component drops as it encounters the nose of the airfoil, while
@@ -161,7 +161,7 @@ Then both components get smaller as the particle passes over the rear part of th
 # Let's look at another important quantity along the trajectory: the pressure.
 
 press = ViscousFlow.pressure(u,sys,t)
-fieldtrajectory(traj,press,sys,fieldlabel="Pressure")
+#!jl fieldtrajectory(traj,press,sys,fieldlabel="Pressure")
 
 #=
 Note that pressure rises dramatically as the particle gets close to the nose of the airfoil.
@@ -176,7 +176,7 @@ Let's evaluate the rate of change of this particle velocity. We do this by
 taking the time derivative of the velocity along the particle's path. The `fieldtrajectory`
 plotting function enables this with an extra argument `deriv=1`:
 =#
-fieldtrajectory(traj,vel,sys,fieldlabel="Acceleration",deriv=1)
+#!jl fieldtrajectory(traj,vel,sys,fieldlabel="Acceleration",deriv=1)
 
 #=
 Now let's compute the convective acceleration field, $\mathbf{u}\cdot\nabla\mathbf{u}$,
@@ -189,8 +189,8 @@ Plot the acceleration components. We will compare the particle's acceleration,
 $\mathrm{d}\mathbf{V}/\mathrm{d}t$, to the convective acceleration evaluated along
 the trajectory, $\mathbf{u}\cdot\nabla\mathbf{u}(\mathbf{r}(t))$. They should be equal:
 =#
-fieldtrajectory(traj,ugradu,sys,fieldlabel="Convective accel")
-fieldtrajectory!(traj,vel,sys,fieldlabel="Acceleration",deriv=1)
+#!jl fieldtrajectory(traj,ugradu,sys,fieldlabel="Convective accel")
+#!jl fieldtrajectory!(traj,vel,sys,fieldlabel="Acceleration",deriv=1)
 #=
 The two sets of components lie right on top of each other. In other words, they are identical!
 
@@ -208,7 +208,7 @@ return to this later. What is its value along the particle trajectory? Let's fin
 ψ = ViscousFlow.streamfunction(u,sys,t);
 
 # Plot the streamfunction as a function of $x$ along trajectory:
-fieldtrajectory(traj,ψ,sys,fieldlabel="Streamfunction")
+#!jl fieldtrajectory(traj,ψ,sys,fieldlabel="Streamfunction")
 
 #=
 It's constant! Why? Because **streamfunction is constant along streamlines**, and in steady flow,

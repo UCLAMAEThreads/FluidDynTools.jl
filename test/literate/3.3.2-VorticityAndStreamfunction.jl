@@ -26,7 +26,7 @@ using FluidDynTools
 #-
 using ViscousFlow
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Set up a grid on which to construct our fields and associated cache
@@ -64,7 +64,7 @@ evaluate_field!(ω,gauss1,cache);
 #=
 Now plot the vorticity field
 =#
-plot(ω,cache,xlim=(-2,2),ylim=(-2,2),levels=range(0.001,10,length=31),xlabel=L"x",ylabel=L"y",title="Vorticity field")
+#!jl plot(ω,cache,xlim=(-2,2),ylim=(-2,2),levels=range(0.001,10,length=31),xlabel=L"x",ylabel=L"y",title="Vorticity field")
 
 #=
 #### Now let's compute the streamfunction
@@ -86,7 +86,7 @@ called the lattice Green's function.
 inverse_laplacian!(ψ,cache);
 
 # Plot the streamfunction contours
-plot(ψ,cache,color=:Black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamfunction")
+#!jl plot(ψ,cache,color=:Black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamfunction")
 
 #=
 Remember that each of these contours of streamfunction is a **streamline**. The only drawback
@@ -113,10 +113,10 @@ curl!(vel,ψ,cache);
 #=
 Now plot them
 =#
-plot(
-    plot(vel.u,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="u component",colorbar=:true),
-    plot(vel.v,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="v component",colorbar=:true),
-    size=(900,450))
+#!jl plot(
+#!jl     plot(vel.u,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="u component",colorbar=:true),
+#!jl     plot(vel.v,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="v component",colorbar=:true),
+#!jl     size=(900,450))
 
 #=
 These are not as obvious to interpret. But with a little bit of thought, you can see
@@ -130,7 +130,7 @@ The speed of the flow, $|\mathbf{u}|$, is a little easier to interpret. But wher
 speed the largest?
 =#
 umag = mag(vel);
-plot(umag,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Velocity magnitude",colorbar=:true)
+#!jl plot(umag,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Velocity magnitude",colorbar=:true)
 
 #=
 To see the speed distribution a little better, try plotting along a slice $y = 0$.
@@ -142,7 +142,7 @@ we like. Here, we will evaluate it at $y = 0$ in a range of points along the $x$
 umag_fcn = interpolatable_field(umag,g);
 #-
 xc,yc = coordinates(umag,g)
-plot(xc,umag_fcn.(xc,0),xlim=(-2,2),ylim=(0,1),xlabel=L"x",ylabel=L"|\mathbf{u}(x,0)|",title="Velocity magnitude",legend=false)
+#!jl plot(xc,umag_fcn.(xc,0),xlim=(-2,2),ylim=(0,1),xlabel=L"x",ylabel=L"|\mathbf{u}(x,0)|",title="Velocity magnitude",legend=false)
 
 #=
 The velocity is actually zero at the center and maximum a little bit away from the center.
@@ -159,11 +159,11 @@ gauss2 = SpatialGaussian(σ,σ,-1,0,Γ) + SpatialGaussian(σ,σ,1,0,Γ);
 #-
 evaluate_field!(ω,gauss2,cache);
 #-
-plot(ω,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Vorticity field")
+#!jl plot(ω,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Vorticity field")
 #-
 ψ = -ω
 inverse_laplacian!(ψ,cache)
-plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamfunction")
+#!jl plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamfunction")
 
 #=
 #### Stagnation points
@@ -178,9 +178,9 @@ points correspond to where the zero contours of each component cross. We will pu
 in the plot, too, just for reference.
 =#
 curl!(vel,ψ,cache)
-plot(ψ,cache,color=:lightgray)
-plot!(vel.u,cache,levels=[0],color=:red,xlim=(-2,2),ylim=(-2,2)) # x component in red
-plot!(vel.v,cache,levels=[0],color=:blue) # y component in red
+#!jl plot(ψ,cache,color=:lightgray)
+#!jl plot!(vel.u,cache,levels=[0],color=:red,xlim=(-2,2),ylim=(-2,2)) # x component in red
+#!jl plot!(vel.v,cache,levels=[0],color=:blue) # y component in red
 #=
 So there are three stagnation points: one near each of the vortex centers and a third one
 right at the origin.
@@ -197,23 +197,23 @@ gauss4 = SpatialGaussian(σ,σ,-1,0,-Γ) + SpatialGaussian(σ,σ,1,0,-Γ) + Spat
 #-
 evaluate_field!(ω,gauss2,cache);
 #-
-plot(ω,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Vorticity field")
+#!jl plot(ω,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Vorticity field")
 
 #-
 ψ = -ω
 inverse_laplacian!(ψ,cache)
-ps = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamfunction")
+#!jl ps = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamfunction")
 #-
 curl!(vel,ψ,cache)
-plot(
-    plot(vel.u,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="u component",colorbar=:true),
-    plot(vel.v,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="v component",colorbar=:true),
-    size=(900,450))
+#!jl plot(
+#!jl     plot(vel.u,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="u component",colorbar=:true),
+#!jl     plot(vel.v,cache,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="v component",colorbar=:true),
+#!jl     size=(900,450))
 
 #-
-plot(ψ,cache,color=:lightgray)
-plot!(vel.u,cache,levels=[0],color=:red,xlim=(-2,2),ylim=(-2,2)) # x component in red
-plot!(vel.v,cache,levels=[0],color=:blue) # y component in red
+#!jl plot(ψ,cache,color=:lightgray)
+#!jl plot!(vel.u,cache,levels=[0],color=:red,xlim=(-2,2),ylim=(-2,2)) # x component in red
+#!jl plot!(vel.v,cache,levels=[0],color=:blue) # y component in red
 #=
 We can find the zeros of the stagnation points by looking for the minima of $|\mathbf{u}|^2$.
 For this, we will use the `NLsolve` package:
@@ -247,10 +247,10 @@ plot. Note that `scatter` expects an array of x locations and an array of
 y locations, whereas `sol.zero` is a single array, containing the coordinates
 where `nlsolve` found the zero. So we have to put these separately into brackets:
 =#
-plot(ψ,cache,color=:lightgray)
-plot!(vel.u,cache,levels=[0],color=:red,xlim=(-2,2),ylim=(-2,2)) # x component in red
-plot!(vel.v,cache,levels=[0],color=:blue)
-scatter!([sol.zero[1]],[sol.zero[2]],markersize=10)
+#!jl plot(ψ,cache,color=:lightgray)
+#!jl plot!(vel.u,cache,levels=[0],color=:red,xlim=(-2,2),ylim=(-2,2)) # x component in red
+#!jl plot!(vel.v,cache,levels=[0],color=:blue)
+#!jl scatter!([sol.zero[1]],[sol.zero[2]],markersize=10)
 #=
 You can do this for the other stagnation points, too. Just change your initial guess.
 =#

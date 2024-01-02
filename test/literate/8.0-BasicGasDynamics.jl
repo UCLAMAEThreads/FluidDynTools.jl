@@ -8,8 +8,6 @@ quasi-1d steady compressible flow.
 
 # ### Set up the module
 using FluidDynTools
-#-
-using Gasdynamics1D
 
 #=
 ### Setting basic properties and states

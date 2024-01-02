@@ -10,8 +10,6 @@ In this notebook, we will learn
 
 # ### Set up the module
 using FluidDynTools
-#-
-using Plots
 
 #=
 In fluid dynamics, we are often interested in measuring pressure differences

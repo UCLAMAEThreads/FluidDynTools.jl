@@ -16,7 +16,7 @@ Here, we review the concepts of
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 using SpecialFunctions
 
 #=
@@ -104,7 +104,7 @@ Let's plot this. It's a dimensionless profile, so we put $\eta$ on the
 vertical axis:
 =#
 η = range(0.0,5.0,length=501)
-plot(F.(η),η,xlims=(0,2),ylims=(0,5),xguide=L"F(\eta)",yguide=L"\eta")
+#!jl plot(F.(η),η,xlims=(0,2),ylims=(0,5),xguide=L"F(\eta)",yguide=L"\eta")
 
 #=
 ### Back to the actual velocity
@@ -122,11 +122,11 @@ In fact, let's make it into a movie, so we can see how the profile changes:
 y = range(0,5,length=501)
 timerange = range(0.001,2,length=81)
 
-@gif for t in timerange
-    plot(u.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"u/U",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
-    hline!([δ(t)],linecolor=:black,linewidth=1,label=L"\delta")
-    vline!([F(1)],label="",linecolor=:black,linewidth=0.5,linestyle=:dash,legend=:true)
-end
+#!jl @gif for t in timerange
+#!jl     plot(u.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"u/U",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
+#!jl     hline!([δ(t)],linecolor=:black,linewidth=1,label=L"\delta")
+#!jl     vline!([F(1)],label="",linecolor=:black,linewidth=0.5,linestyle=:dash,legend=:true)
+#!jl end
 
 #=
 This movie shows the layer getting thicker with time. However, the
@@ -159,10 +159,10 @@ dF(η) = 2/sqrt(π)*exp(-η^2)
 vort(y,t;U=1,ν=1) = U/δ(t,ν=ν)*dF(y/δ(t,ν=ν))
 
 #-
-@gif for t in timerange
-    plot(vort.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"\omega",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
-    hline!([δ(t)],linecolor=:black,linewidth=1,label=L"\delta")
-end
+#!jl @gif for t in timerange
+#!jl     plot(vort.(y,t),y,xlim=(0,2),ylim=(0,Inf),xlabel=L"\omega",ylabel=L"y",label="Profile",title=string("t = ",round(t,digits=2)))
+#!jl     hline!([δ(t)],linecolor=:black,linewidth=1,label=L"\delta")
+#!jl end
 
 #=
 Though the vorticity spreads out and gets weaker, the integral under this curve

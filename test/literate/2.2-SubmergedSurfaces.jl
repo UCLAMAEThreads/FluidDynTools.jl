@@ -8,9 +8,6 @@ flat surfaces immersed in static fluids
 
 # ### Set up the module
 using FluidDynTools
-#-
-using Plots
-
 
 #=
 # Example

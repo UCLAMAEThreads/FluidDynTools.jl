@@ -9,9 +9,8 @@ relative to the upstream stagnation pressure.
 
 # ### Set up the module
 using FluidDynTools
-using Gasdynamics1D
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Set up a nozzle
@@ -26,7 +25,7 @@ noz = Nozzle(Ai,At,Ae)
 
 
 # Let's plot this nozzle to see its shape
-nozzleplot(noz)
+#!jl nozzleplot(noz)
 
 #=
 ### Create a flow through the nozzle
@@ -52,7 +51,7 @@ The plot below shows that the pressure reaches a minimum in the throat
 and the Mach number reaches a maximum there. However, it does not quite
 get to sonic conditions.
 =#
-nozzleplot(noz,pb,p0,T0,fields=("pressure","machnumber"))
+#!jl nozzleplot(noz,pb,p0,T0,fields=("pressure","machnumber"))
 
 # One note on the last plots: We could have specified the gas, but it defaults to air.
 
@@ -64,12 +63,12 @@ For several back pressures, we get a *shock* in the diverging section.
 As back pressure gets smaller, this shock appears closer to the exit.
 Finally, the shock leaves the nozzle entirely.
 =#
-nozzleplot(noz,Pressure(660u"kPa"),p0,T0,fields=("pressure","mach"))
-nozzleplot!(noz,Pressure(600u"kPa"),p0,T0,fields=("pressure","mach"))
-nozzleplot!(noz,Pressure(500u"kPa"),p0,T0,fields=("pressure","mach"))
-nozzleplot!(noz,Pressure(400u"kPa"),p0,T0,fields=("pressure","mach"))
-nozzleplot!(noz,Pressure(360u"kPa"),p0,T0,fields=("pressure","mach"))
-nozzleplot!(noz,Pressure(300u"kPa"),p0,T0,fields=("pressure","mach"))
+#!jl nozzleplot(noz,Pressure(660u"kPa"),p0,T0,fields=("pressure","mach"))
+#!jl nozzleplot!(noz,Pressure(600u"kPa"),p0,T0,fields=("pressure","mach"))
+#!jl nozzleplot!(noz,Pressure(500u"kPa"),p0,T0,fields=("pressure","mach"))
+#!jl nozzleplot!(noz,Pressure(400u"kPa"),p0,T0,fields=("pressure","mach"))
+#!jl nozzleplot!(noz,Pressure(360u"kPa"),p0,T0,fields=("pressure","mach"))
+#!jl nozzleplot!(noz,Pressure(300u"kPa"),p0,T0,fields=("pressure","mach"))
 
 #=
 ### Mass flow rate

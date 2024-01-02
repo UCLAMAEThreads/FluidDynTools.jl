@@ -27,7 +27,7 @@ using PotentialFlow
 using PotentialFlow.Bodies
 import PotentialFlow: Polygon
 #-
-using Plots
+#!jl using Plots
 
 #=
 ## Examples of conformal transforms
@@ -67,14 +67,14 @@ ccoeff = ComplexF64[0.5(a+b), 0, 0.5(a-b)]
 Zr = 0.0+0.0im
 α = π/4
 b = ConformalBody(ccoeff,Zr,α)
-plot(b)
+#!jl plot(b)
 
 #=
 We can see how this mapping works by visualizing the gridlines in the circle ($\zeta$) plane
 and the corresponding lines in the physical plane (the $z$ plane). Importantly,
 all of the
 =#
-plot(b.m,size=(600,300))
+#!jl plot(b.m,size=(600,300))
 
 #=
 It is easy to get a flat plate from the ellipse by setting $b = 0$.
@@ -92,7 +92,7 @@ zero angle.
 =#
 ccoeff = ComplexF64[1.0,0.0,0.0,0.1,0.1*exp(im*π/4)]
 b = ConformalBody(ccoeff)
-plot(b)
+#!jl plot(b)
 
 
 #=
@@ -109,12 +109,12 @@ x = [-1.0,1.0,0.5,-0.5]
 y = [-1.0,-1.0,1.0,1.0]
 p = Polygon(x,y)
 b = ConformalBody(p)
-plot(b)
+#!jl plot(b)
 
 #=
 This makes a simple trapezoid. Let's see the mapping more clearly
 =#
-plot(b.m,size=(600,300))
+#!jl plot(b.m,size=(600,300))
 
 #=
 How about a star?
@@ -127,7 +127,7 @@ p = Polygon(w)
 Zr = 0.0+0.0im
 α = dθ/2 # rotate to make one point of the star directed upward
 b = ConformalBody(p,Zr,α)
-plot(b)
+#!jl plot(b)
 
 #=
 or an airfoil? Here, we use the NACA 4-digit series of airfoils, in
@@ -140,7 +140,7 @@ number of vertices, so it looks smooth but actually it is a polygon!
 w = naca4(0.04,0.4,0.12;len=1)
 p = Polygon(w)
 b = ConformalBody(p)
-plot(b)
+#!jl plot(b)
 
 #=
 Finally, a polygon need not have an enclosed area, but rather can double back
@@ -150,8 +150,8 @@ function allows us to specify the vertices of the line segments.
 x = -0.5:0.1:0.5
 p = LinkedLines(x,0.1*sin.(8*x))
 b = ConformalBody(p)
-plot(b)
+#!jl plot(b)
 #=
 Let's see how the transform looks in this case:
 =#
-plot(b.m,size=(600,300))
+#!jl plot(b.m,size=(600,300))

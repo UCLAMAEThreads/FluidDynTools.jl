@@ -13,7 +13,7 @@ using FluidDynTools
 #-
 using ViscousFlow
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Set up a grid on which to construct our fields
@@ -84,21 +84,21 @@ evaluate_field!(ϕ,field,cache);
 #=
 Plot it
 =#
-plot(ϕ,cache)
+#!jl plot(ϕ,cache)
 
 #=
 Now try taking the gradient of this to get a velocity field `vel`:
 =#
 vel = zeros_grid(cache)
 grad!(vel,ϕ,cache)
-plot(vel,cache)
+#!jl plot(vel,cache)
 
 #=
 Is this velocity field diverence free (i.e. incompressible)? Let's see:
 =#
 divv = zeros_griddiv(cache)
 divergence!(divv,vel,cache)
-plot(divv,cache,levels=range(-4,4,length=30))
+#!jl plot(divv,cache,levels=range(-4,4,length=30))
 
 #=
 Doesn't look like it is! Note that we explicitly set the contour levels here
@@ -111,7 +111,7 @@ just taken the Laplacian of this to get the same thing. We have the
 `laplacian!` function for this. Let's try it:
 =#
 laplacian!(divv,ϕ,cache)
-plot(divv,cache,levels=range(-4,4,length=30))
+#!jl plot(divv,cache,levels=range(-4,4,length=30))
 
 #=
 What will happen if we take a curl of this velocity field (to get the vorticity field)? Try it here

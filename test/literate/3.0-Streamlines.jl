@@ -8,7 +8,7 @@ In this notebook, we will learn some basic ways to calculate and plot streamline
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 
 #=
 Streamlines are curves in space that are everywhere tangent to the local velocity field.
@@ -64,12 +64,13 @@ ys(x;k=1) = k/x
 Now plot several for different choices of `k`:
 =#
 x = range(-3,3,length=101)
-plot(xlim=(-3,3),ylim=(-3,3),ratio=1)
-plot!(x,ys.(x;k=2),color=:black)
-plot!(x,ys.(x;k=1),color=:black)
-plot!(x,ys.(x;k=-1),color=:black)
-plot!(x,ys.(x;k=-2),color=:black)
-plot!(x,ys.(x;k=0),color=:black)
+#jl ys.(x;k=2)
+#!jl plot(xlim=(-3,3),ylim=(-3,3),ratio=1)
+#!jl plot!(x,ys.(x;k=2),color=:black)
+#!jl plot!(x,ys.(x;k=1),color=:black)
+#!jl plot!(x,ys.(x;k=-1),color=:black)
+#!jl plot!(x,ys.(x;k=-2),color=:black)
+#!jl plot!(x,ys.(x;k=0),color=:black)
 
 #=
 The $x$ axis is a streamline ($k = 0$). The $y$ axis is also a streamline, but
@@ -80,7 +81,8 @@ $$x = k/y$$
 =#
 xs(y;k=1) = k/y
 y = range(-3,3,length=101)
-plot!(xs.(y;k=0),y,color=:black)
+#jl xs.(y;k=0)
+#!jl plot!(xs.(y;k=0),y,color=:black)
 #=
 (Note that we swapped the order of arguments.)
 =#
@@ -116,12 +118,12 @@ convert the polar coordinates into Cartesian:
 
 $$x = r\cos\theta,\qquad y = r\sin\theta$$
 =#
-xs(Θ;k=1) = rs(Θ,k=k)*cos(Θ)
-ys(Θ;k=1) = rs(Θ,k=k)*sin(Θ)
+xs(Θ;k=1) = rs(Θ;k=k)*cos(Θ)
+ys(Θ;k=1) = rs(Θ;k=k)*sin(Θ)
 
 #-
 Θ = range(0,2π,length=201)
-plot(xlim=(-2,2),ylim=(-2,2),ratio=1)
-plot!(xs.(Θ,k=1),ys.(Θ,k=1),color=:black)
-plot!(xs.(Θ,k=1.5),ys.(Θ,k=1.5),color=:black)
-plot!(xs.(Θ,k=0.5),ys.(Θ,k=0.5),color=:black)
+#!jl plot(xlim=(-2,2),ylim=(-2,2),ratio=1)
+#!jl plot!(xs.(Θ,k=1),ys.(Θ,k=1),color=:black)
+#!jl plot!(xs.(Θ,k=1.5),ys.(Θ,k=1.5),color=:black)
+#!jl plot!(xs.(Θ,k=0.5),ys.(Θ,k=0.5),color=:black)

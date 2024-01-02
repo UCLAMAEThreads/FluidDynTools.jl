@@ -39,7 +39,7 @@ using FluidDynTools
 using PotentialFlow
 using ViscousFlow
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Set up grids and grid data for visualizing the potential flows
@@ -101,7 +101,7 @@ a potential flow. However, this function simply enables useful grid calculations
 ViscousFlow.streamfunction!(ψ,fs,cache);
 
 # Plot the streamfunction contours
-p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a uniform flow",show=true)
+#!jl p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a uniform flow",show=true)
 
 #=
 As expected, the streamlines are angled at 60 degrees.
@@ -113,7 +113,7 @@ Try some different angles to see the result.
 We can also evaluate the **velocity field** of the free stream, using the
 `velocity!` function. It should show the same value everywhere for both components.
 =#
-ViscousFlow.velocity!(vel,fs,cache)
+#!jl ViscousFlow.velocity!(vel,fs,cache)
 
 #=
 ### Basic singularity: A source
@@ -128,7 +128,7 @@ s = Source.Point(zs,Q)
 
 # Evaluate its streamfunction and plot it:
 ViscousFlow.streamfunction!(ψ,s,cache);
-p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a source")
+#!jl p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a source")
 
 #=
 This looks as expected, but a little strange along the $-x$ axis. Remember, the
@@ -142,7 +142,7 @@ ray by using a rotation operator. To move it to some specified angle, we
 use the `angle=` keyword argument:
 =#
 ViscousFlow.streamfunction!(ψ,s,cache,angle=π/4)
-plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamlines of a source")
+#!jl plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamlines of a source")
 
 
 #=
@@ -152,10 +152,10 @@ the u and v components are stored at different places on a staggered grid. We th
 evaluate each component on a different set of points:
 =#
 ViscousFlow.velocity!(vel,s,cache);
-plot(
-plot(vel.u,g,levels=range(-1,1,length=31),clim=(-1,1),xlabel=L"x",ylabel=L"y",title="u component"),
-plot(vel.v,g,levels=range(-1,1,length=31),clim=(-1,1),xlabel=L"x",ylabel=L"y",title="v component")
-)
+#!jl plot(
+#!jl plot(vel.u,g,levels=range(-1,1,length=31),clim=(-1,1),xlabel=L"x",ylabel=L"y",title="u component"),
+#!jl plot(vel.v,g,levels=range(-1,1,length=31),clim=(-1,1),xlabel=L"x",ylabel=L"y",title="v component")
+#!jl )
 
 #=
 ### Another basic singularity: A point vortex
@@ -171,7 +171,7 @@ v = Vortex.Point(zv,Γ)
 
 # Evaluate its streamfunction and plot it:
 ViscousFlow.streamfunction!(ψ,v,cache)
-p = plot(ψ,cache,color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a vortex")
+#!jl p = plot(ψ,cache,color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a vortex")
 
 #=
 ### Another singularity: a dipole (or doublet)
@@ -192,7 +192,7 @@ d = Doublets.Doublet(zd,D*exp(im*α))
 
 
 ViscousFlow.streamfunction!(ψ,d,cache)
-p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),levels=range(-1,1,length=15),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a doublet")
+#!jl p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),levels=range(-1,1,length=15),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a doublet")
 
 
 #=
@@ -212,7 +212,7 @@ The strength is $\sigma$ and the rotation angle of the corner is $\alpha$.
 c = Corner(σ,ν,α)
 
 ViscousFlow.streamfunction!(ψ,c,cache)
-p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),levels=range(-3,3,length=31),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a corner")
+#!jl p = plot(ψ,cache,xlim=(-2,2),ylim=(-2,2),levels=range(-3,3,length=31),color=:black,xlabel=L"x",ylabel=L"y",title="Streamlines of a corner")
 
 #=
 Note the straight streamlines that cross at the origin. There is a stagnation point there.

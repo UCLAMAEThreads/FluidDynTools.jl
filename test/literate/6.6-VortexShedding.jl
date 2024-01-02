@@ -22,7 +22,7 @@ using PotentialFlow
 using PotentialFlow.Bodies
 import PotentialFlow: Polygon
 #-
-using Plots
+#!jl using Plots
 
 #=
 ## Set up the body
@@ -64,8 +64,8 @@ sys = inverse_conftransform(sys,b)
 clear_images!(b)
 enforce_no_flow_through!(b, motion, sys, t)
 
-ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=xlim,ylim=ylim)
-plot!(ps,b)
+#!jl ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=xlim,ylim=ylim)
+#!jl plot!(ps,b)
 
 #=
 We will fix this behavior by producing vorticity at the trailing edge.
@@ -238,7 +238,7 @@ blob_z = conftransform(ambient_ω_ζ,b_now);
 =#
 xlim = (-2-time[end],2-time[end])
 ylim = (-1,1)
-ps = plot(track[end],legend=false,markerstrokewidth=0,color=cgrad(:RdBu,rev=true),clim=(-0.025/(2π),0.025/(2π)),markersize=1,ratio=1,xlim=xlim,ylim=ylim) #
+#!jl ps = plot(track[end],legend=false,markerstrokewidth=0,color=cgrad(:RdBu,rev=true),clim=(-0.025/(2π),0.025/(2π)),markersize=1,ratio=1,xlim=xlim,ylim=ylim) #
 #=
 ### Plot the streamlines
 =#
@@ -246,8 +246,8 @@ xg = range(xlim...,length=201)
 yg = range(ylim...,length=51)
 zg = [x + im*y for y in yg, x in xg]
 ζg = inverse_conftransform(zg,b)
-ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-1,1,length=31),xlim=xlim,ylim=ylim)
-plot!(ps,b,size=(600,300))
+#!jl ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-1,1,length=31),xlim=xlim,ylim=ylim)
+#!jl plot!(ps,b,size=(600,300))
 
 #=
 ### Plot the force
@@ -256,5 +256,5 @@ Here, we are approximately computing
 $$f = -\rho dP/dt$$
 =#
 fhist = -diff(imp)/Δt
-plot(time,2*imag.(fhist),label="C_L",xlim=(0,5),ylim=(0,2),legend=true)
-plot!(time,2*real.(fhist),label="C_D")
+#!jl plot(time,2*imag.(fhist),label="C_L",xlim=(0,5),ylim=(0,2),legend=true)
+#!jl plot!(time,2*real.(fhist),label="C_D")

@@ -45,7 +45,7 @@ using PotentialFlow
 using PotentialFlow.Bodies
 import PotentialFlow: RigidBodyMotion
 #-
-using Plots
+#!jl using Plots
 
 #=
 ## Set up the body
@@ -110,8 +110,8 @@ that does this. It simply calls a function [`PotentialFlow.streamfunction`](@ref
 and evaluates the streamfunction in the circle plane, using the points in `ζg`,
 and then plots the results on the corresponding Cartesian grid in the physical plane.
 =#
-ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-0.5,0.5,length=31),xlim=(-2,2),ylim=(-2,2))
-plot!(ps,b)
+#!jl ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-0.5,0.5,length=31),xlim=(-2,2),ylim=(-2,2))
+#!jl plot!(ps,b)
 
 #=
 It is clear that the normally circular streamlines around the vortex have
@@ -132,8 +132,8 @@ sys = inverse_conftransform(sys,b)
 clear_images!(b)
 enforce_no_flow_through!(b, motion, sys, t)
 
-ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=(-2,2),ylim=(-2,2))
-plot!(ps,b)
+#!jl ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=(-2,2),ylim=(-2,2))
+#!jl plot!(ps,b)
 
 #=
 ## Example 3: Body in translation
@@ -149,8 +149,8 @@ sys = ()
 
 clear_images!(b)
 enforce_no_flow_through!(b, motion, sys, t)
-ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=(-2,2),ylim=(-2,2))
-plot!(ps,b)
+#!jl ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=(-2,2),ylim=(-2,2))
+#!jl plot!(ps,b)
 
 #=
 Notice how different these streamlines look compared to previous example. It is not obvious that
@@ -183,5 +183,5 @@ sys = inverse_conftransform(sys,b) # Inverse-transform them
 
 clear_images!(b)
 enforce_no_flow_through!(b, motion, sys, t)
-ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=(-2,2),ylim=(-2,2))
-plot!(ps,b)
+#!jl ps = streamlines(xg,yg,ζg,(b,sys),levels=range(-2,2,length=31),xlim=(-2,2),ylim=(-2,2))
+#!jl plot!(ps,b)

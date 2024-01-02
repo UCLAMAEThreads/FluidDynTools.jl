@@ -12,7 +12,7 @@ using FluidDynTools
 #-
 using ViscousFlow
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Velocity profiles
@@ -51,7 +51,8 @@ u_couette(y;U=1,H=1) = U*y/H
 Now generate a set of points in $y$ (between 0 and 1), evaluate $u$, and plot the profile:
 =#
 y = 0:0.01:1
-plot(u_couette.(y),y,xlims=(0,1),ylims=(0,1),xguide="u/U",yguide="y/H",framestyle=:box,title="Couette flow profile")
+#jl u_couette.(y)
+#!jl plot(u_couette.(y),y,xlims=(0,1),ylims=(0,1),xguide="u/U",yguide="y/H",framestyle=:box,title="Couette flow profile")
 
 #=
 It should be understood that this profile signifies that the flow is going horizontally,
@@ -61,7 +62,8 @@ remains at rest at the bottom $y=0$, and is fastest at the top $y = H$.
 # A channel Poiseuille flow profile would be parabolic:
 u_pois(y;U=1,H=1) = 4*U*y*(H-y)/H^2
 #-
-plot(u_pois.(y),y,xlims=(0,1),ylims=(0,1),xguide="u/U",yguide="y/H",framestyle=:box,title="Poiseuille flow profile")
+#jl u_pois.(y)
+#!jl plot(u_pois.(y),y,xlims=(0,1),ylims=(0,1),xguide="u/U",yguide="y/H",framestyle=:box,title="Poiseuille flow profile")
 
 #=
 ### Other ways we visualize a flow
@@ -88,8 +90,8 @@ vel = ViscousFlow.velocity(u,sys,t)
 press = ViscousFlow.pressure(u,sys,t);
 
 # ### Plotting the vorticity field
-plot(ω,sys,levels=range(-15,15,length=30), color = :RdBu,clim=(-15,15),ylim=(-1,1),xlim=(-1,3),
-      size=(900,300),colorbar=:true,bodyfill=true,title="Vorticity field")
+#!jl plot(ω,sys,levels=range(-15,15,length=30), color = :RdBu,clim=(-15,15),ylim=(-1,1),xlim=(-1,3),
+#!jl       size=(900,300),colorbar=:true,bodyfill=true,title="Vorticity field")
 #=
 This is a contour plot. Each line represents a contour of constant value of the
 quantity we are plotting. Here, that value is **vorticity**.
@@ -117,7 +119,7 @@ is fluid motion out there, but no rotational motion in that flow.
 In this case, we also will create a line contour plot, but use the same color for each
 contour. Why do we do this? Maybe you have a guess once you look at it.
 =#
-plot(ψ,sys,levels=31, color = :Black, bodyfill=true, xlim = (-1,3),ylim=(-0.5,0.5),size=(900,400),title="Streamfunction field")
+#!jl plot(ψ,sys,levels=31, color = :Black, bodyfill=true, xlim = (-1,3),ylim=(-0.5,0.5),size=(900,400),title="Streamfunction field")
 
 #=
 These lines of constant streamfunction are **streamlines**. You can see the separated
@@ -128,12 +130,12 @@ flow region quite clearly as the region with "missing" streamlines on the upper 
 ### Plot the velocity field components
 This is a vector field, so we will plot the components separately.
 =#
-plot(
-    plot(vel.u,sys,size=(900,300),levels=range(-0.1,1.5,length=31), bodyfill=true, color = :RdBu,clim=(-0.1,1.5),xlim=(-1,3),ylim=(-0.5,0.5),title="x component of velocity"),
-    plot(vel.v,sys,size=(900,300),color=:RdBu,levels=range(-0.15,0.15,length=31),bodyfill=true, clim=(-0.15,0.15),xlim=(-1,3),ylim=(-0.5,0.5),title="y component of velocity"),
-    layout=(2,1),
-    size=(800,400)
-    )
+#!jl plot(
+#!jl    plot(vel.u,sys,size=(900,300),levels=range(-0.1,1.5,length=31), bodyfill=true, color = :RdBu,clim=(-0.1,1.5),xlim=(-1,3),ylim=(-0.5,0.5),title="x component of velocity"),
+#!jl    plot(vel.v,sys,size=(900,300),color=:RdBu,levels=range(-0.15,0.15,length=31),bodyfill=true, clim=(-0.15,0.15),xlim=(-1,3),ylim=(-0.5,0.5),title="y component of velocity"),
+#!jl    layout=(2,1),
+#!jl    size=(800,400)
+#!jl    )
 #=
 There is not as much important to say about these components. It is not very
 typical to plot individual components like this, and it is challenging to interpret
@@ -145,7 +147,7 @@ these plots.
 This field is the speed of the flow.
 =#
 umag = mag(vel)
-plot(umag,sys,color = :RdBu, bodyfill=true, ylim = (-0.5,0.5),xlim = (-1,3),size=(900,400),title="Velocity magnitude field",colorbar=:true)
+#!jl plot(umag,sys,color = :RdBu, bodyfill=true, ylim = (-0.5,0.5),xlim = (-1,3),size=(900,400),title="Velocity magnitude field",colorbar=:true)
 
 #=
 Notice that the wake is clearly shown in this field, distinctly slower than the rest
@@ -162,8 +164,8 @@ $$C_p = \dfrac{p-p_\infty}{\frac{1}{2} \rho U_\infty^2}$$
 In this case, the free stream and density are both equal to 1, so we just divide pressure by
 0.5 (i.e., multiply pressure by 2) to get the pressure coefficient.
 =#
-plot(2*press,sys,levels=range(-1.5,1.5,length=31),color=:RdBu,bodyfill=true, clim=(-1.5,1.5),xlim=(-1,1),ylim=(-0.5,0.5),
-        colorbar=:true,size=(900,400),title="Pressure coefficient")
+#!jl plot(2*press,sys,levels=range(-1.5,1.5,length=31),color=:RdBu,bodyfill=true, clim=(-1.5,1.5),xlim=(-1,1),ylim=(-0.5,0.5),
+#!jl         colorbar=:true,size=(900,400),title="Pressure coefficient")
 #=
 There are two notable features in the pressure. Along the upper part of the wing,
 the pressure is very low. This is the **suction** side of the wing, where it generates

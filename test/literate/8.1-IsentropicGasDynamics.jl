@@ -9,9 +9,8 @@ states and processes in isentropic quasi-1d steady compressible flow.
 # ### Set up the module
 #-
 using FluidDynTools
-using Gasdynamics1D
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Using isentropic relations
@@ -93,9 +92,9 @@ for M in Mrange
     push!(Aratio,value(AOverAStar(MachNumber(M),Isentropic)))
 end
 
-plot(Mrange,Aratio,xlim=(0,4),ylim=(0,12),yticks=0:1:12,xlabel="Mach number",ylabel=L"A/A_*",legend=false)
-scatter!([1],[1])
-plot!(Mrange,2*ones(length(Mrange)),style=:dash)
+#!jl plot(Mrange,Aratio,xlim=(0,4),ylim=(0,12),yticks=0:1:12,xlabel="Mach number",ylabel=L"A/A_*",legend=false)
+#!jl scatter!([1],[1])
+#!jl plot!(Mrange,2*ones(length(Mrange)),style=:dash)
 
 #=
 #### Example 4
