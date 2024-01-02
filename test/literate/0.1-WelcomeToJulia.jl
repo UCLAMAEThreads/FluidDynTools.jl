@@ -104,7 +104,7 @@ If we want to save that plot, e.g., for homework, then we would run this to save
 it as a pdf file (the best format for quality). Obviously you can change the name,
 but you should end it with ".pdf".
 =#
-savefig(ps,"myfigure.pdf")
+#!jl savefig(ps,"myfigure.pdf")
 
 #=
 ### Special functions
