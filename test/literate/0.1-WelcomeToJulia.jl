@@ -57,7 +57,7 @@ For example, let's write `Δt = 0.01`. We type `\Delta + TAB`:
 Now try plotting. We first have to load the Plots package to use its plotting features.
 It take a couple of seconds for this to load.
 =#
-using Plots
+#!jl using Plots
 
 #=
 Now let's plot our data.
@@ -67,12 +67,12 @@ time, since it does a little compiling on the fly. (Julia operates on a 'just-in
 compiling approach to generate much faster codes. As a result, this function is
 basically instantaneous the next time you run it.
 =#
-plot(x,y)
+#!jl plot(x,y)
 
 #=
 That's the basic plot. Let's make it look better:
 =#
-plot(x,y,xlims=(0,5),ylims=(-1,1),legend=false,xguide="x",yguide="y")
+#!jl plot(x,y,xlims=(0,5),ylims=(-1,1),legend=false,xguide="x",yguide="y")
 
 
 
@@ -84,15 +84,15 @@ using LaTeXStrings
 #=
 Then, each of the labels can be prefixed with `L`:
 =#
-plot(x,y,xlims=(0,5),ylims=(-1,1),legend=false,xguide=L"x",yguide=L"y")
+#!jl plot(x,y,xlims=(0,5),ylims=(-1,1),legend=false,xguide=L"x",yguide=L"y")
 
 #=
 Suppose we wish to plot multiple things. Then we use `plot!` on every additional
 plot. Also, let's save the plot for later use (saving), by naming it `ps`.
 =#
 y2 = cos.(x)
-ps = plot(x,y,xlims=(0,5),ylims=(-1,1),label=L"sin($x$)",legend=true,xguide=L"x",yguide=L"y")
-plot!(ps,x,y2,label=L"cos($x$)")
+#!jl ps = plot(x,y,xlims=(0,5),ylims=(-1,1),label=L"sin($x$)",legend=true,xguide=L"x",yguide=L"y")
+#!jl plot!(ps,x,y2,label=L"cos($x$)")
 #=
 Note: The $$ around the `x` in the labels above renders this in math (italic) font,
 but keeps the rest of the text in roman (upright) font.
@@ -120,7 +120,7 @@ using SpecialFunctions
 f(x) = besselj(2,x)
 #-
 x = 0:0.01:20;
-plot(x,f.(x),grid=:true,xlims=(0,Inf),ylim=(-1,1),xguide=L"x",yguide=L"J_2(x)",legend=:false)
+#!jl plot(x,f.(x),grid=:true,xlims=(0,Inf),ylim=(-1,1),xguide=L"x",yguide=L"J_2(x)",legend=:false)
 
 #=
 ### Further help on Julia
