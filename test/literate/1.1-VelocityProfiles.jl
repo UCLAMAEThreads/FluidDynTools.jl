@@ -12,7 +12,7 @@ mechanics: the **velocity profile**.
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 
 #=
 To start, let's consider one of the most basic types of flow: the linear shear flow,
@@ -96,7 +96,7 @@ Notice that $u$ is 0 at the beginning and end of the range. Let's plot it. But
 let's plot it as a velocity profile, which means we make velocity the 'x' axis and $y$
 the 'y' axis:
 =#
-plot(v,y,xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)",ylabel=L"y")
+#!jl plot(v,y,xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)",ylabel=L"y")
 
 #=
 NOTE: The use of `xlim=(0,Inf),ylim=(0,Inf)` simply ensures that the axes start at 0
@@ -111,7 +111,7 @@ flow through the gap.
 Suppose we wish to plot the velocity in different units. We can easily do this with
 the `xunit` flag. For example, in `ft/s`:
 =#
-plot(v,y,xunit=u"ft/s",xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)",ylabel=L"y")
+#!jl plot(v,y,xunit=u"ft/s",xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)",ylabel=L"y")
 #-
 #=
 In the previous notebook, we showed that we can set velocity using
@@ -120,7 +120,7 @@ We have to use the `.` notation to make sure each element in `v` gets the
 same treatment:
 =#
 vv = Velocity.(v)
-plot(vv,y,xlim=(0,Inf),ylim=(0,Inf),xlabel="u(y)",ylabel="y")
+#!jl plot(vv,y,xlim=(0,Inf),ylim=(0,Inf),xlabel="u(y)",ylabel="y")
 
 #=
 The `Velocity` function simply *wraps* the velocity data in `v`. It is
@@ -195,7 +195,7 @@ T = [0.181,0.36,0.54,0.72,0.899,1.086]u"N*m";
 #=
 Let's plot the data to see the trend qualitatively:
 =#
-scatter(Ω,T,xlim=(0,Inf),ylim=(0,Inf),xlabel="Angular velocity",ylabel="Torque")
+#!jl scatter(Ω,T,xlim=(0,Inf),ylim=(0,Inf),xlabel="Angular velocity",ylabel="Torque")
 
 #=
 It looks quite linear! This is expected, since torque is linearly dependent on

@@ -12,7 +12,7 @@ using FluidDynTools
 using PotentialFlow
 using LinearAlgebra: diagm
 #-
-using Plots
+#!jl using Plots
 
 
 #=
@@ -132,9 +132,9 @@ targets = Elements.position.(unit_sources);
 
 
 # Let's plot the sources and normals just to make sure it looks like what we want:
-plot(unit_sources)
-quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
-plot!(unit_sources, markersize = 8)
+#!jl plot(unit_sources)
+#!jl quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
+#!jl plot!(unit_sources, markersize = 8)
 
 # The cross marks correspond to the center of each source, and the arrows correspond to the normal vectors along the surface.
 
@@ -162,7 +162,7 @@ Q = A \ b;
 sources = Source.Point.(targets, Q);
 
 # Let's look at the sources now, with their correct strengths:
-plot(sources, color = :RdBu, colorbar = :right, markersize = 10, title = "Strengths of sources")
+#!jl plot(sources, color = :RdBu, colorbar = :right, markersize = 10, title = "Strengths of sources")
 #=
 You should notice that there are positive strengths (sources) near the side of the triangle
 facing the flow, and negative strengths (sinks).
@@ -180,9 +180,9 @@ Tmax = 20
 tx, ty = compute_trajectories((fs,sources),zstart,Tmax,Δt=0.01);
 
 
-plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
-               xlim = (-3, 3), ylim = (-3, 3), size = (400, 400), title = "Streamlines")
-plot!(sources, markersize = 2, color = :RdBu)
+#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400), title = "Streamlines")
+#!jl plot!(sources, markersize = 2, color = :RdBu)
 
 #=
 #### Pressure distribution
@@ -214,7 +214,7 @@ $\mathbf{u}$ is the surface velocity. Let's compute the pressure coefficient her
 it by coloring the source points with the local value of $C_p$.
 =#
 Cp = 1 .- dotproduct.(us,us)/dotproduct(U∞,U∞)
-plot(sources, marker_z = Cp, color = :RdBu, colorbar = :right, markersize = 10, title = "Cp distribution")
+#!jl plot(sources, marker_z = Cp, color = :RdBu, colorbar = :right, markersize = 10, title = "Cp distribution")
 
 #=
 Before moving on, we'll wrap all of our steps into a function so we don't have to keep
@@ -257,9 +257,9 @@ unit_sources = Source.Point.(z, 1.0);
 targets = Elements.position.(unit_sources);
 
 # Plot these to check that they are the way we want them:
-plot(unit_sources, ratio = 1)
-quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
-plot!(unit_sources, markersize = 10)
+#!jl plot(unit_sources, ratio = 1)
+#!jl quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
+#!jl plot!(unit_sources, markersize = 10)
 
 #=
 Now we will use our `simulate_flow` function, providing the uniform flow as
@@ -269,13 +269,13 @@ U∞ = 1.0+0im
 other_elements = Freestreams.Freestream(U∞)
 sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements)
 
-plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
-               xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
-plot!(sources, markersize = 2, color = :RdBu)
+#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
+#!jl plot!(sources, markersize = 2, color = :RdBu)
 
 # Let's plot the pressure distribution on the shape.
 θ = range(0, 2π, length=length(Cp)+1)[1:end-1]
-plot(θ,Cp,xlim=(0,2π),xlabel=L"\theta",ylabel=L"C_p")
+#!jl plot(θ,Cp,xlim=(0,2π),xlabel=L"\theta",ylabel=L"C_p")
 # This agrees with our expected result, $C_p(\theta) = 1 - 4\sin^2\theta$.
 
 #=
@@ -311,8 +311,8 @@ n̂ = -im*dz./Δslist;
 
 unit_sources = Source.Point.(targets, 1.0);
 
-plot(unit_sources, ratio = 1)
-quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
+#!jl plot(unit_sources, ratio = 1)
+#!jl quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
 
 #=
 Now we will compute the flow at 5 degrees angle of attack. We do this by rotating
@@ -322,9 +322,9 @@ the uniform flow by 5 degrees:
 U∞ = 1.0*exp(im*α)
 other_elements = Freestreams.Freestream(U∞)
 sources, us0, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(-3 .+ im*range(-1,0.5,length=31)));
-plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
-               xlim = (-1, 1), ylim = (-0.5, 0.5), size = (600, 600), ratio=1)
-plot!(sources, markersize = 2, color = :RdBu)
+#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl                xlim = (-1, 1), ylim = (-0.5, 0.5), size = (600, 600), ratio=1)
+#!jl plot!(sources, markersize = 2, color = :RdBu)
 
 
 #=
@@ -333,7 +333,7 @@ $x$ component of the surface velocity, plotting it from the top of the trailing 
 then counterclockwise around the airfoil to the bottom of the trailing edge. Note
 the big jump at the trailing edge (the first point and the last point in this plot).
 =#
-plot(real.(us0))
+#!jl plot(real.(us0))
 
 #=
 You might notice that the flow does not come smoothly off the trailing edge, evident
@@ -356,9 +356,9 @@ U∞ = 1.0*exp(im*5*π/180)
 other_elements = (Freestreams.Freestream(U∞),Vortex.Point(0+0im,Γ))
 sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(-3 .+ im*range(-1,0.5,length=31)));
 
-plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
-               xlim = (-1, 1), ylim = (-0.5, 0.5), size = (600, 600))
-plot!(sources, markersize = 2, color = :RdBu,ratio=1)
+#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl                xlim = (-1, 1), ylim = (-0.5, 0.5), size = (600, 600))
+#!jl plot!(sources, markersize = 2, color = :RdBu,ratio=1)
 
 #=
 Here is the jump in velocity at the trailing edge. We want this value to be as small
@@ -371,8 +371,8 @@ Now let's plot the surface velocity again, comparing it with the original. There
 no more jump. (There is a small bump near the center, but this not really physical and
 comes from using only a finite number of sources.
 =#
-plot(real.(us),ylim=(-1,3))
-plot!(real.(us0),ylim=(-1,3))
+#!jl plot(real.(us),ylim=(-1,3))
+#!jl plot!(real.(us0),ylim=(-1,3))
 
 # The force on the airfoil
 F = -sum(Cp.*n̂.*Δslist)
@@ -420,24 +420,24 @@ append!(n̂, exp.(im*θᵢ))
 append!(n̂, exp.(im*θᵢ))
 
 unit_sources = Source.Point.(targets, 1.0);
-plot(unit_sources, ratio = 1)
-quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
+#!jl plot(unit_sources, ratio = 1)
+#!jl quiver!(real.(targets), imag.(targets), quiver = 0.15.*(real.(n̂), imag.(n̂)), color = :black)
 
 # With $U_\infty$ going downward:
 U∞ = 0.0-im
 other_elements = Freestreams.Freestream(U∞)
 sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(range(-3,3,length=31) .+ 3im),Δt = 0.0025)
-plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
-               xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
-plot!(unit_sources, markersize = 2, color = :RdBu)
+#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
+#!jl plot!(unit_sources, markersize = 2, color = :RdBu)
 
 # With $U_\infty$ from the side:
 U∞ = 1.0+0im
 other_elements = Freestreams.Freestream(U∞)
 sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements)
-plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
-               xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
-plot!(sources, markersize = 2, color = :RdBu)
+#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
+#!jl plot!(sources, markersize = 2, color = :RdBu)
 
 #=
 ## Appendix

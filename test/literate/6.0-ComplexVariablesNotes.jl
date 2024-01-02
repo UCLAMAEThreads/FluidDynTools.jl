@@ -9,7 +9,7 @@ them in Julia.
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 
 #=
 Potential flows make common use of **complex variables**. For example, rather than
@@ -61,7 +61,7 @@ need to use a `.` to apply it to every element of the array:
 real.(z)
 
 # Plot these points just to see what we've created:
-scatter(real.(z),imag.(z),ratio=1,xlim=(-2,2),ylim=(-1,1),legend=false,xlabel=L"x",ylabel=L"y")
+#!jl scatter(real.(z),imag.(z),ratio=1,xlim=(-2,2),ylim=(-1,1),legend=false,xlabel=L"x",ylabel=L"y")
 
 
 #=
@@ -84,7 +84,7 @@ pop!(z);
 
 # Let us plot these points to check. The `ratio=1` argument makes sure that we get equal
 # dimensions of the axes. So a circle looks like a circle rather than a squashed circle
-scatter(real.(z),imag.(z),ratio=1,xlim=(-2,2),ylim=(-2,2),legend=false,xlabel=L"x",ylabel=L"y")
+#!jl scatter(real.(z),imag.(z),ratio=1,xlim=(-2,2),ylim=(-2,2),legend=false,xlabel=L"x",ylabel=L"y")
 
 #=
 ### Other operations
@@ -140,9 +140,9 @@ zrot = exp(im*α)*z;  ## new point, rotated
 Plot these points, using some lines from the origin to show that the rotation
 preserves the length.
 =#
-scatter(real.([z,zrot]),imag.([z,zrot]),xlim=(-3,3),ylim=(-3,3),legend=true,ratio=1)
-plot!([0,real(z)],[0,imag(z)],label="Ray to original pt")
-plot!([0,real(zrot)],[0,imag(zrot)],label="Ray to rotated pt")
+#!jl scatter(real.([z,zrot]),imag.([z,zrot]),xlim=(-3,3),ylim=(-3,3),legend=true,ratio=1)
+#!jl plot!([0,real(z)],[0,imag(z)],label="Ray to original pt")
+#!jl plot!([0,real(zrot)],[0,imag(zrot)],label="Ray to rotated pt")
 
 #=
 ### Other uses of complex variables in potential flow

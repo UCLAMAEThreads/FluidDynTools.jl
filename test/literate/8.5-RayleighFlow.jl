@@ -8,9 +8,8 @@ through a constant-area duct with heat transfer, commonly known as **Rayleigh fl
 
 # ### Set up the module
 using FluidDynTools
-using Gasdynamics1D
 #-
-using Plots
+#!jl using Plots
 
 
 #=
@@ -63,8 +62,8 @@ for M in Mrange
     push!(T0_over_T0star,value(T0OverT0Star(MachNumber(M),RayleighFlow,gas=Air)))
 end
 #-
-plot(Mrange,T0_over_T0star,xlim=(0,8),ylim=(0,2),xticks=0:1:8,xlabel="Mach number",ylabel=L"T_0/T_0^*",legend=false)
-plot!(Mrange,0.75*ones(length(Mrange)),style=:dash)
+#!jl plot(Mrange,T0_over_T0star,xlim=(0,8),ylim=(0,2),xticks=0:1:8,xlabel="Mach number",ylabel=L"T_0/T_0^*",legend=false)
+#!jl plot!(Mrange,0.75*ones(length(Mrange)),style=:dash)
 
 #=
 For example, if $T_0/T_0^* = 0.75$, there are two possible Mach numbers, one subsonic

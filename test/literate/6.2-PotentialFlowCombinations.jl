@@ -18,7 +18,7 @@ using FluidDynTools
 using PotentialFlow
 using ViscousFlow
 #-
-using Plots
+#!jl using Plots
 
 #=
 ### Set up grids and grid data for visualizing the potential flows
@@ -64,7 +64,7 @@ We will add these, but take some care to use our rotation trick on the branch cu
 of the source, so that it is along the $+x$ axis.
 =#
 ψ .= ViscousFlow.streamfunction(fs,cache) + ViscousFlow.streamfunction(s,cache,angle=0)
-p = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Uniform flow + source")
+#!jl p = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Uniform flow + source")
 
 #=
 There is a **stagnation point** in this flow somewhere to the left of the source,
@@ -94,9 +94,9 @@ ystag = 0
 ψstag = ψfield(xstag,ystag)
 
 # Now add a streamline with this value of $\psi$ to the plot:
-p = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Uniform flow + source")
-plot!(p,ψ,cache,levels=[ψstag],linewidth=2)
-scatter!(p,[xstag],[ystag],label="stagnation point")
+#!jl p = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Uniform flow + source")
+#!jl plot!(p,ψ,cache,levels=[ψstag],linewidth=2)
+#!jl scatter!(p,[xstag],[ystag],label="stagnation point")
 
 #=
 ### Another combination: two vortices
@@ -126,8 +126,8 @@ v = Vortex.Point.(zvort,Γvort)
 
 # Visualize with the usual plot
 ViscousFlow.streamfunction!(ψ,v,cache)
-p = plot(ψ,cache,color=:black,levels=range(-1,1,length=15),xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamlines of a pair of vortices",show=true)
-plot!(p,v) ## This adds markers for the vortices
+#!jl p = plot(ψ,cache,color=:black,levels=range(-1,1,length=15),xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamlines of a pair of vortices",show=true)
+#!jl plot!(p,v) ## This adds markers for the vortices
 
 #=
 Let's evaluate the velocity at the origin, which is a convenient point on the
@@ -173,8 +173,8 @@ vortex_system = (v1,v2);
 
 # Now plot them
 ViscousFlow.streamfunction!(ψ,vortex_system,cache)
-p = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamlines of two vortex patches",show=true)
-plot!(p,vortex_system)
+#!jl p = plot(ψ,cache,color=:black,xlim=(-2,2),ylim=(-2,2),xlabel=L"x",ylabel=L"y",title="Streamlines of two vortex patches",show=true)
+#!jl plot!(p,vortex_system)
 
 # We can evaluate the velocity of this system at any point, e.g.,
 z_eval = 0.0+0.0*im

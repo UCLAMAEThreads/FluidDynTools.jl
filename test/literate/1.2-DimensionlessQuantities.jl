@@ -10,7 +10,7 @@ and the physical significance of this.
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 
 #=
 In the previous notebook, we made a plot of the velocity field in a gap
@@ -21,7 +21,7 @@ H = 1u"cm"
 Uc = 1u"m/s"
 y = range(0u"cm",H,length=101)
 v = u.(y,Uc,H)
-plot(v,y,xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)",ylabel=L"y")
+#!jl plot(v,y,xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)",ylabel=L"y")
 
 #=
 In this plot, the data have units---they are *dimensional* data.
@@ -42,7 +42,7 @@ to know the velocity profile in a different size gap at a different flow speed.
 If, instead, we divide the velocity data `v` by flow speed `Uc` and divide the position
 data `y` by gap size `H`, then we "scale out" the specific choices for these parameters:
 =#
-plot(v/Uc,y/H,xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)/U_c",ylabel=L"y/H",yticks=0:0.25:1)
+#!jl plot(v/Uc,y/H,xlim=(0,Inf),ylim=(0,Inf),xlabel=L"u(y)/U_c",ylabel=L"y/H",yticks=0:0.25:1)
 
 #=
 This is a *dimensionless plot*. The values on each axis have no units: they are

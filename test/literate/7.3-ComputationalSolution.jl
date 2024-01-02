@@ -49,7 +49,7 @@ using FluidDynTools
 #-
 using ViscousFlow
 using Statistics
-using Plots
+#!jl using Plots
 
 
 #=
@@ -113,7 +113,7 @@ x = init_motion_state(body,m)
 update_body!(body,x,m)
 
 # Let's plot it just to make sure
-plot(body,xlim=xlim,ylim=ylim)
+#!jl plot(body,xlim=xlim,ylim=ylim)
 
 #=
 ### Construct the system structure
@@ -144,20 +144,20 @@ Now we are ready to solve the problem. Let's advance the solution to $t = 10$.
 ### Examine
 Let's look at the flow field at the end of this interval
 =#
-plot(
-plot(vorticity(integrator),sys,title="Vorticity",clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu,ylim=ylim),
-plot(streamfunction(integrator),sys,title="Streamlines",ylim=ylim,color = :Black),
-    size=(700,300)
-    )
+#!jl plot(
+#!jl plot(vorticity(integrator),sys,title="Vorticity",clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu,ylim=ylim),
+#!jl plot(streamfunction(integrator),sys,title="Streamlines",ylim=ylim,color = :Black),
+#!jl     size=(700,300)
+#!jl     )
 
 #=
 Now let's make a movie, like we did last time.
 =#
 
 sol = integrator.sol;
-@gif for (u,t) in zip(sol.u,sol.t)
-    plot(vorticity(u,sys,t),sys,clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu)
-end every 5
+#!jl @gif for (u,t) in zip(sol.u,sol.t)
+#!jl     plot(vorticity(u,sys,t),sys,clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu)
+#!jl end every 5
 
 #=
 #### Compute the force history
@@ -175,11 +175,11 @@ Since the quantities in this simulation are already scaled by $\rho$, $U_\infty$
 set to 1 and the height of the shape to 1), then we obtain these coefficients by
 simply dividing by 1/2, or equivalently, by multiplying by 2:
 =#
-plot(
-plot(sol.t,2*fx,xlim=(0,Inf),ylim=(0,6),xlabel="Convective time",ylabel="\$C_D\$",legend=:false),
-plot(sol.t,2*fy,xlim=(0,Inf),ylim=(-6,6),xlabel="Convective time",ylabel="\$C_L\$",legend=:false),
-    size=(800,350)
-)
+#!jl plot(
+#!jl plot(sol.t,2*fx,xlim=(0,Inf),ylim=(0,6),xlabel="Convective time",ylabel="\$C_D\$",legend=:false),
+#!jl plot(sol.t,2*fy,xlim=(0,Inf),ylim=(-6,6),xlabel="Convective time",ylabel="\$C_L\$",legend=:false),
+#!jl     size=(800,350)
+#!jl )
 
 # The mean drag and lift coefficients are
 meanCD = Statistics.mean(2*fx)

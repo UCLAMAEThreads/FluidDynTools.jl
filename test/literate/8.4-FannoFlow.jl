@@ -8,9 +8,8 @@ This notebook demonstrates the use of tools for computing flow through a constan
 
 # ### Set up the module
 using FluidDynTools
-using Gasdynamics1D
 #-
-using Plots
+#!jl using Plots
 
 
 #=
@@ -31,7 +30,7 @@ for M in Mrange
     push!(fLDarray,value(FLStarOverD(MachNumber(M),FannoFlow,gas=Air)))
 end
 #-
-plot(Mrange,fLDarray,xlim=(0,8),ylim=(0,10),xticks=0:1:8,xlabel="Mach number",ylabel=L"fL^*/D",legend=false)
+#!jl plot(Mrange,fLDarray,xlim=(0,8),ylim=(0,10),xticks=0:1:8,xlabel="Mach number",ylabel=L"fL^*/D",legend=false)
 
 #=
 Notice that the reference length goes to zero at Mach number 1, as it should, by

@@ -24,7 +24,7 @@ We will discuss a streakline in the context of a simple, but unsteady flow field
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 
 #=
 Let's first define the velocity field. Note that each function must contain
@@ -52,7 +52,7 @@ stream = compute_streamline(u,v,rake,(0,4),t);
 #=
 Plot the streamlines:
 =#
-trajectories(stream,color=:black)
+#!jl trajectories(stream,color=:black)
 
 #=
 So the velocity field generally progresses from left to right, but exhibits a wavy behavior.
@@ -78,8 +78,8 @@ Let's plot the streakline. The use of `ratio=1` ensures that we get the
 correct aspect ratio of the plot. The scatter plot places the injection point
 on the plot.
 =#
-plot(xstreak,ystreak,ratio=1,legend=:bottomleft,label="Streakline")
-scatter!([y[1]],[y[2]],label="Injection point")
+#!jl plot(xstreak,ystreak,ratio=1,legend=:bottomleft,label="Streakline")
+#!jl scatter!([y[1]],[y[2]],label="Injection point")
 
 #=
 The streakline is a growing sinusoid. To understand how this comes about, let's
@@ -93,9 +93,9 @@ Let's do this for three particles.
 traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
 traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
 traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
-trajectories!(traj1,label="Particle path τ = -2")
-trajectories!(traj2,label="Particle path τ = -1.75")
-trajectories!(traj3,label="Particle path τ = -1.5")
+#!jl trajectories!(traj1,label="Particle path τ = -2")
+#!jl trajectories!(traj2,label="Particle path τ = -1.75")
+#!jl trajectories!(traj3,label="Particle path τ = -1.5")
 
 #=
 Notice how the paths are just straight lines. But each one ends at a
@@ -103,18 +103,18 @@ different point on the growing sinusoid. Just to emphasize that this is
 an unsteady flow field, let's make a movie of this over a range of time:
 =#
 
-@gif for t in range(-1.5,4,length=40)
-    xstreak, ystreak = compute_streakline(u,v,y,t,τmin=-4,Δttraj=0.01)
-    traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
-    traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
-    traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
-
-    plot(xstreak,ystreak,ratio=1,legend=:bottomleft,label="Streakline",xlim=(-5,8),ylim=(-6,6))
-    scatter!([y[1]],[y[2]],label="Injection point")
-    trajectories!(traj1,label="Particle path τ = -2")
-    trajectories!(traj2,label="Particle path τ = -1.75")
-    trajectories!(traj3,label="Particle path τ = -1.5")
-end
+#!jl @gif for t in range(-1.5,4,length=40)
+#!jl    xstreak, ystreak = compute_streakline(u,v,y,t,τmin=-4,Δttraj=0.01)
+#!jl    traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
+#!jl    traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
+#!jl    traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
+#!jl
+#!jl    plot(xstreak,ystreak,ratio=1,legend=:bottomleft,label="Streakline",xlim=(-5,8),ylim=(-6,6))
+#!jl    scatter!([y[1]],[y[2]],label="Injection point")
+#!jl    trajectories!(traj1,label="Particle path τ = -2")
+#!jl    trajectories!(traj2,label="Particle path τ = -1.75")
+#!jl    trajectories!(traj3,label="Particle path τ = -1.5")
+#!jl end
 
 #=
 So, to summarize, *flow lines are all different from each other in unsteady flows*,

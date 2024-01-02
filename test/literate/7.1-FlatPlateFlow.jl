@@ -23,7 +23,7 @@ using FluidDynTools
 #-
 using ViscousFlow
 import ViscousFlow: force
-using Plots
+#!jl using Plots
 
 
 #=
@@ -65,7 +65,7 @@ this vorticity remains inside of a relatively thin layer (the boundary layer).
 Ultimately, the boundary layers on each side merge behind the plate to form
 the wake.
 =#
-plot(ω,sys,title="Vorticity",clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu,xlim=(-0.5,3),ylim=(-0.5,0.5))
+#!jl plot(ω,sys,title="Vorticity",clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu,xlim=(-0.5,3),ylim=(-0.5,0.5))
 
 #=
 ### Streamlines
@@ -83,7 +83,7 @@ the plate appears thicker than zero and a little bit rounded (parabola shaped).
 
 Behind the plate, the streamlines bow back inward a bit.
 =#
-plot(ψ,sys,title="Streamfunction",color=:black,xlim=(-0.5,3),ylim=(-0.5,0.5))
+#!jl plot(ψ,sys,title="Streamfunction",color=:black,xlim=(-0.5,3),ylim=(-0.5,0.5))
 
 #=
 ### Velocity
@@ -102,12 +102,12 @@ we display the velocity as a function of $y$, above the plate:
 =#
 ysamp = range(0,0.5,length=101)
 xsamp = [0.25, 0.5, 0.75]
-p = plot(xlim=(0,1.2),ylim=(0,0.5),xlabel=L"u(y)/U_\infty",ylabel=L"y/L",legend=true)
+#!jl p = plot(xlim=(0,1.2),ylim=(0,0.5),xlabel=L"u(y)/U_\infty",ylabel=L"y/L",legend=true)
 for x in xsamp
     Ue = ufcn(x,0.5) # estimate of the external velocity
-    plot!(p,ufcn.(x,ysamp .+ cellsize(sys)/2),ysamp,label=string("x=",x))
+    #!jl plot!(p,ufcn.(x,ysamp .+ cellsize(sys)/2),ysamp,label=string("x=",x))
 end
-p
+#!jl p
 
 #=
 Some observations:
@@ -137,11 +137,11 @@ than the free stream.
 # Let's plot the vertical velocity:
 ysamp = range(0,0.5,length=101)
 xsamp = [0.25, 0.5, 0.75]
-p = plot(xlim=(0.0,0.2),ylim=(0,0.5),xlabel=L"v(y)/U_\infty",ylabel=L"y/L",legend=true)
+#!jl p = plot(xlim=(0.0,0.2),ylim=(0,0.5),xlabel=L"v(y)/U_\infty",ylabel=L"y/L",legend=true)
 for x in xsamp
-    plot!(p,vfcn.(x,ysamp .+ cellsize(sys)/2),ysamp,label=string("x=",x))
+    #!jl plot!(p,vfcn.(x,ysamp .+ cellsize(sys)/2),ysamp,label=string("x=",x))
 end
-p
+#!jl p
 
 #=
 Here, we see that the vertical velocity is a lot smaller than the horizontal

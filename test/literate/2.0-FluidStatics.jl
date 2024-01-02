@@ -11,7 +11,7 @@ In this notebook, we will learn
 # ### Set up the module
 using FluidDynTools
 #-
-using Plots
+#!jl using Plots
 
 #=
 Fluid statics basically involves fluids that are not in motion (although we'll generalize
@@ -84,7 +84,7 @@ to increase the pressure by one atmosphere. That's not far at all.
 
 We can plot the pressure distribution through this depth by using `staticpressure`
 =#
-staticpressure(10u"m",Water)
+#!jl staticpressure(10u"m",Water)
 
 #-
 #=
@@ -98,7 +98,7 @@ and plot the pressure distribution throughout both layers. The top of the air
 layer is at 1 atm. (Here, we are imagining both fluids sitting inside a container,
 so a layer of air makes sense.)
 =#
-staticpressure([10u"m",20u"m"],[Air,Water])
+#!jl staticpressure([10u"m",20u"m"],[Air,Water])
 
 #=
 There's no noticeable change of pressure in the upper (air) layer, so we
@@ -132,7 +132,7 @@ Pressure(3u"atm" + SpecificWeight(Water)*5u"ft" + SpecificWeight(Glycerin)*10u"f
 #=
 We can plot the pressure in these layers:
 =#
-staticpressure([5u"ft",5u"ft"+10u"ft"],[Water,Glycerin],ambient=3u"atm")
+#!jl staticpressure([5u"ft",5u"ft"+10u"ft"],[Water,Glycerin],ambient=3u"atm")
 
 #=
 Glycerin is only slightly denser than water, so it doesn't look remarkably
