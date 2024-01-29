@@ -106,7 +106,7 @@ to get the range of values that we want. Sometimes we have to do this.
 =#
 
 #=
-Notice that we just took the divergence of the curl of $\phi$. We could have
+Notice that we just took the divergence of the gradient of $\phi$. We could have
 just taken the Laplacian of this to get the same thing. We have the
 `laplacian!` function for this. Let's try it:
 =#
