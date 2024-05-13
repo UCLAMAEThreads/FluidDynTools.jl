@@ -43,7 +43,7 @@ struct FalknerSkan
 end
 
 """
-    falknerskan2(beta[,Vw=0][,etamax=10][,h0init=1.3]) -> FalknerSkan
+    falknerskan(beta[,Vw=0][,etamax=10][,h0init=1.3]) -> FalknerSkan
 
 Compute the Falkner-Skan boundary layer solution for parameter `beta`, for an external velocity \$U_e = A x^m\$,
 where \$m = \\beta/(2-\\beta)\$
@@ -74,6 +74,12 @@ julia> fs.Cf
 ```
 This indicates that the skin friction coefficient is approximately \$C_f = 0.664/Re_x^{1/2}\$.
 
+To plot the u profile, for example, you can use
+```
+julia> plot(fs.u,fs.eta)
+```
+with the `Plots.jl` package.
+
 If you want to specify a wall velocity, in dimensionless form \$V_w/U_e Re_x^{1/2}\$, then use the optional `Vw = ` keyword.
 
 In some cases you may need to modify the initial guess for the \$f''(0)\$ for the shooting method. This is done
@@ -82,7 +88,7 @@ with the `h0init = ` keyword.
 Similarly, in some cases you may wish to provide a larger maximum \$\\eta\$ coordinate, which you can do
 with the `etamax = ` keyword.
 """
-function falknerskan2(β;Vw = 0.0,etamax = 10.0,h0init=1.3)
+function falknerskan(β;Vw = 0.0,etamax = 10.0,h0init=1.3)
 
   m = β/(2-β)
   p = [Vw,m,etamax]
