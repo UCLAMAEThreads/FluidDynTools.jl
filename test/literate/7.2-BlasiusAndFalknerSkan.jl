@@ -97,17 +97,16 @@ Here, we will compute the self-similar velocity profile and compute other
 boundary-layer quantities. The only required input for this `falknerskan` function
 is $\beta$.
 
-It returns the velocity profile `u` (scaled by $U_e$), the vertical coordinate $\eta$,
-and the proportionality constants $C_1$ through $C_4$ described above.
+It returns a data structure with all of the data we will need, including the velocity profile.
+(Use `?falknerskan` for details.)
 =#
-
 β = 0.0
-u, η, d99, dstar, theta, Cf = falknerskan(β); # I used more descriptive symbols that C1, C2, C3, C4
+fs = falknerskan(β);
 
 #=
 For example, the proportionality constant on the 99 percent thickness is
 =#
-d99
+fs.d99
 
 #=
 which means that, for $\beta = 0$,
@@ -120,7 +119,7 @@ $$\dfrac{\delta_{99}(x)}{x} = \dfrac{4.91}{\sqrt{Re_x}} $$
 
 Similarly, the momentum thickness:
 =#
-theta
+fs.theta
 
 #=
 so that
@@ -131,7 +130,7 @@ $$\dfrac{\theta(x)}{x} = \dfrac{0.664}{\sqrt{Re_x}} $$
 #=
 #### Let's plot the profile
 =#
-#!jl plot(u,η,xlim=(0,2),ylim=(0,maximum(η)),xlabel=L"F'(\eta) = u/U_e",ylabel=L"\eta = y/\delta(x)")
+#!jl plot(fs.u,fs.eta,xlim=(0,2),ylim=(0,maximum(fs.eta)),xlabel=L"F'(\eta) = u/U_e",ylabel=L"\eta = y/\delta(x)")
 
 #=
 #### Drag force

@@ -103,10 +103,10 @@ we display the velocity as a function of $y$, above the plate:
 ysamp = range(0,0.5,length=101)
 xsamp = [0.25, 0.5, 0.75]
 #!jl p = plot(xlim=(0,1.2),ylim=(0,0.5),xlabel=L"u(y)/U_\infty",ylabel=L"y/L",legend=true)
-for x in xsamp
-    Ue = ufcn(x,0.5) # estimate of the external velocity
-    #!jl plot!(p,ufcn.(x,ysamp .+ cellsize(sys)/2),ysamp,label=string("x=",x))
-end
+#!jl for x in xsamp
+#!jl    Ue = ufcn(x,0.5) # estimate of the external velocity
+#!jl    plot!(p,ufcn.(x,ysamp .+ cellsize(sys)/2)/Ue,ysamp,label=string("x=",x))
+#!jl end
 #!jl p
 
 #=
@@ -138,9 +138,9 @@ than the free stream.
 ysamp = range(0,0.5,length=101)
 xsamp = [0.25, 0.5, 0.75]
 #!jl p = plot(xlim=(0.0,0.2),ylim=(0,0.5),xlabel=L"v(y)/U_\infty",ylabel=L"y/L",legend=true)
-for x in xsamp
-    #!jl plot!(p,vfcn.(x,ysamp .+ cellsize(sys)/2),ysamp,label=string("x=",x))
-end
+#!jl for x in xsamp
+#!jl   plot!(p,vfcn.(x,ysamp .+ cellsize(sys)/2),ysamp,label=string("x=",x))
+#!jl end
 #!jl p
 
 #=

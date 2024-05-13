@@ -71,7 +71,7 @@ if GROUP == "Notebooks"
 
   for (root, dirs, files) in walkdir(litdir)
     for file in files
-      #endswith(file,".jl") && startswith(file,"3.3.1") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
+      #endswith(file,".jl") && startswith(file,"7.1") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
       endswith(file,".jl") && startswith(file,r"[0-9]") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
     end
   end
