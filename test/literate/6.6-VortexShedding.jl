@@ -18,9 +18,9 @@ produced at an edge in such measure that it makes the velocity *finite* at the e
 
 using FluidDynTools
 #-
-using PotentialFlow
-using PotentialFlow.Bodies
-import PotentialFlow: Polygon
+using FluidDynTools.PotentialFlow
+using FluidDynTools.PotentialFlow.Bodies
+import FluidDynTools.PotentialFlow: Polygon
 #-
 #!jl using Plots
 

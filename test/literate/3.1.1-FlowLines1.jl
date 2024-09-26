@@ -13,7 +13,7 @@ and observe them in a pre-computed steady flow field.
 # ### Set up the module
 using FluidDynTools
 #-
-using ViscousFlow
+using FluidDynTools.ViscousFlow
 #-
 #!jl using Plots
 

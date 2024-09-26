@@ -47,7 +47,6 @@ In the code below, you won't see these details shown, but they are all done behi
 # ### Set up the module
 using FluidDynTools
 #-
-using ViscousFlow
 using Statistics
 #!jl using Plots
 
@@ -104,7 +103,7 @@ cent = [0.0,0.0] # center of joint with respect to inertial system
 α = 45π/180 # angle of joint with respect to inertial system
 X = MotionTransform(cent,α)
 joint = Joint(X)
-m = RigidBodyMotion(joint,body)
+m = ViscousFlow.RigidBodyMotion(joint,body)
 
 #=
 Now update the body to its desired configuration.
@@ -146,7 +145,7 @@ Let's look at the flow field at the end of this interval
 =#
 #!jl plot(
 #!jl plot(vorticity(integrator),sys,title="Vorticity",clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu,ylim=ylim),
-#!jl plot(streamfunction(integrator),sys,title="Streamlines",ylim=ylim,color = :Black),
+#!jl plot(ViscousFlow.streamfunction(integrator),sys,title="Streamlines",ylim=ylim,color = :Black),
 #!jl     size=(700,300)
 #!jl     )
 

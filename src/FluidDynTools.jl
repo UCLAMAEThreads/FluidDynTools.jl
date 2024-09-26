@@ -26,6 +26,15 @@ module FluidDynTools
 
   @reexport using ILMPostProcessing
 
+  @reexport using Serialization
+
+  @reexport using ViscousFlow
+
+  @reexport using PotentialFlow
+
+  @reexport using SpecialFunctions
+
+
 
   export save_ns_solution,load_ns_solution, get_flowfield,
         compute_trajectory, compute_trajectories,
@@ -51,6 +60,16 @@ module FluidDynTools
   include("fileio.jl")
 
   include("plot_recipes.jl")
+
+
+  include("viscousflow/fileio.jl")
+
+  import PotentialFlow: induce_velocity, Vortex.Point
+
+  include("potentialflow/utils.jl")
+  include("potentialflow/trajectories.jl")
+  include("potentialflow/grid.jl")
+
 
   function __init__()
 
@@ -105,6 +124,7 @@ module FluidDynTools
 
     end
 
+    #=
     @require ViscousFlow="103da179-b3e4-57c1-99a4-586354eb2c5a" begin
 
       include("viscousflow/fileio.jl")
@@ -121,6 +141,7 @@ module FluidDynTools
       end
 
     end
+    =#
 
   end
 

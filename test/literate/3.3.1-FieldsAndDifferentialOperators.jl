@@ -11,7 +11,7 @@ to solve for these fields.
 # ### Set up the modules
 using FluidDynTools
 #-
-using ViscousFlow
+using FluidDynTools.ViscousFlow
 #-
 #!jl using Plots
 

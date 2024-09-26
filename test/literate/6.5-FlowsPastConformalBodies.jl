@@ -41,9 +41,9 @@ side is given by the inverse mapping, $\zeta(z)$.)
 
 using FluidDynTools
 #-
-using PotentialFlow
-using PotentialFlow.Bodies
-import PotentialFlow: RigidBodyMotion
+using FluidDynTools.PotentialFlow
+using FluidDynTools.PotentialFlow.Bodies
+import FluidDynTools.PotentialFlow: RigidBodyMotion
 #-
 #!jl using Plots
 
