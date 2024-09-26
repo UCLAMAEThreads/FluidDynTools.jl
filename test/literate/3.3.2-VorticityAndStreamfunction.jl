@@ -24,7 +24,6 @@ and $(x0,y0)$ its center.
 # ### Set up the module
 using FluidDynTools
 #-
-using FluidDynTools.ViscousFlow
 #-
 #!jl using Plots
 

@@ -16,7 +16,6 @@ $$\Delta p = f(D,\rho,\omega,Q)$$
 using FluidDynTools
 #-
 #!jl using Plots
-using FluidDynTools.Serialization # to read/write data
 
 #=
 ### Read in some raw data

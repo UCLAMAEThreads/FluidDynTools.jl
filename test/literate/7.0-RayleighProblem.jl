@@ -17,7 +17,6 @@ Here, we review the concepts of
 using FluidDynTools
 #-
 #!jl using Plots
-using FluidDynTools.SpecialFunctions
 
 #=
 To solve this flow, we assume that the flow is incompressible and two-dimensional.

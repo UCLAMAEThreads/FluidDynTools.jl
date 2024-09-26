@@ -47,6 +47,7 @@ In the code below, you won't see these details shown, but they are all done behi
 # ### Set up the module
 using FluidDynTools
 #-
+import FluidDynTools.ViscousFlow: streamfunction
 using Statistics
 #!jl using Plots
 
@@ -145,7 +146,7 @@ Let's look at the flow field at the end of this interval
 =#
 #!jl plot(
 #!jl plot(vorticity(integrator),sys,title="Vorticity",clim=(-10,10),levels=range(-10,10,length=30), color = :RdBu,ylim=ylim),
-#!jl plot(ViscousFlow.streamfunction(integrator),sys,title="Streamlines",ylim=ylim,color = :Black),
+#!jl plot(streamfunction(integrator),sys,title="Streamlines",ylim=ylim,color = :Black),
 #!jl     size=(700,300)
 #!jl     )
 

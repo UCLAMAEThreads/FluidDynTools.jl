@@ -21,8 +21,7 @@ The flow is precomputed, so we will simply load it in.
 # ### Set up the module
 using FluidDynTools
 #-
-#src using FluidDynTools.ViscousFlow
-#src import FluidDynTools.ViscousFlow: force
+import FluidDynTools.ViscousFlow: force
 #!jl using Plots
 
 
