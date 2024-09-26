@@ -36,9 +36,8 @@ $$ u_\theta = \dfrac{1}{r} \dfrac{\partial \phi}{\partial \theta} = -\dfrac{\par
 # ### Set up the module
 using FluidDynTools
 #-
-using FluidDynTools.PotentialFlow
-using FluidDynTools.ViscousFlow
-#-
+using FluidDynTools.PotentialFlow.Freestreams
+using FluidDynTools.PotentialFlow.Doublets
 #!jl using Plots
 
 #=
@@ -84,7 +83,7 @@ polar notation for this, $U_\infty\mathrm{e}^{\mathrm{i}\alpha}$.
 
 U∞ = 1.0  ## speed
 α = π/3  ## angle in radians (60 degrees)
-fs = Freestreams.Freestream(U∞*exp(im*α))
+fs = Freestream(U∞*exp(im*α))
 
 #=
 Hang on... what? Did we just use complex variables? Make sure to review the notes in the
@@ -188,7 +187,7 @@ away from the center.
 zd = 0.0+im*0.0
 D = 1.0
 α = π/4
-d = Doublets.Doublet(zd,D*exp(im*α))
+d = Doublet(zd,D*exp(im*α))
 
 
 ViscousFlow.streamfunction!(ψ,d,cache)
