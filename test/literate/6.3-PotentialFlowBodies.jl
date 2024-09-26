@@ -9,7 +9,6 @@ to generate potential flows past stationary obstacles.
 # ### Set up the module
 using FluidDynTools
 #-
-using FluidDynTools.PotentialFlow
 using LinearAlgebra: diagm
 #-
 #!jl using Plots

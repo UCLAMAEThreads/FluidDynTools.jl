@@ -23,7 +23,6 @@ the next notebook, we will explore flow fields for some basic problems.
 
 using FluidDynTools
 #-
-using FluidDynTools.PotentialFlow
 using FluidDynTools.PotentialFlow.Bodies
 import FluidDynTools.PotentialFlow: Polygon
 #-

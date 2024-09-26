@@ -70,6 +70,8 @@ module FluidDynTools
   include("potentialflow/trajectories.jl")
   include("potentialflow/grid.jl")
 
+  include("boundarylayers.jl")
+
 
   function __init__()
 
@@ -224,7 +226,6 @@ module FluidDynTools
 =#
 
 
- include("boundarylayers.jl")
 
 
 end
