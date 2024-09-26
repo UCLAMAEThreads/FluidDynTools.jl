@@ -3,6 +3,7 @@ using ColorTypes
 import PlotUtils: cgrad, palette, color_list
 using LaTeXStrings
 
+#=
 @userplot Trajectories
 
 @recipe function f(h::Trajectories)
@@ -37,7 +38,7 @@ using LaTeXStrings
     end
   end
 end
-
+=#
 
 @userplot FieldTrajectory
 

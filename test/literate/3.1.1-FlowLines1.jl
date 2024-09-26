@@ -33,11 +33,10 @@ filename = "NACA4415Re500.jld2"
 u, t, sys = load_ns_solution(filename);
 
 #=
-For our immediate use, let's get the velocity field (`vel`) for this flow. We get that with
-the `velocity` function in the `ViscousFlow` package (which is loaded into the `MAE150A`
-package). This velocity field will serve a lot of our discussion below.
+For our immediate use, let's get the velocity field (`ufield`, `vfield`) for this flow. We get that with
+the `velocity_xu` function in the `ViscousFlow` package. This velocity field will serve a lot of our discussion below.
 =#
-vel = ViscousFlow.velocity(u,sys,t);
+ufield, vfield = ViscousFlow.velocity_xy(u,sys,t);
 
 #=
 ## Particle trajectories (i.e., pathlines)
@@ -87,7 +86,7 @@ Trange = (0.0,25.0);
 #=
 Compute the trajectories.
 =#
-traj_array = compute_trajectory(vel,sys,pts,Trange);
+traj = compute_trajectory(ufield,vfield,pts,Trange);
 
 # Each entry in the output array `traj_array` contains a trajectory of a particle. For example,
 # `traj_array[1]` contains the trajectory of particle 1, $\mathbf{r}_1(t)$.
@@ -138,7 +137,7 @@ trajectory, this should be equal to the particle's acceleration. Let's try this.
 # #### Velocity along the trajectory
 # First, let us calculate the velocity along one of the particle trajectories:
 particle_number = 2
-traj = traj_array[particle_number];
+traj = traj[particle_number];
 
 #=
 Plot the velocity components as a function of the $x$ component of the trajectory.
@@ -182,7 +181,7 @@ plotting function enables this with an extra argument `deriv=1`:
 Now let's compute the convective acceleration field, $\mathbf{u}\cdot\nabla\mathbf{u}$,
 and evaluate it along the particle's trajectory.
 =#
-ugradu = ViscousFlow.convective_acceleration(u,sys,t);
+ugradu = ViscousFlow.convective_acceleration_xy(u,sys,t);
 
 #=
 Plot the acceleration components. We will compare the particle's acceleration,
@@ -205,7 +204,7 @@ account for the unsteady part of the acceleration.)
 Streamfunction, $\psi$, is another important quantity in fluid dynamics, and we will
 return to this later. What is its value along the particle trajectory? Let's find out:
 =#
-ψ = ViscousFlow.streamfunction(u,sys,t);
+ψ = ViscousFlow.streamfunction_xy(u,sys,t);
 
 # Plot the streamfunction as a function of $x$ along trajectory:
 #!jl fieldtrajectory(traj,ψ,sys,fieldlabel="Streamfunction")

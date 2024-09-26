@@ -71,7 +71,8 @@ streakline longer, how should we change `τmin`?
 
 y = [0.0,0.0]
 t = 0.0
-xstreak, ystreak = compute_streakline(u,v,y,t);
+streak = compute_streakline(u,v,y,t);
+xstreak, ystreak = streak[1]
 
 #=
 Let's plot the streakline. The use of `ratio=1` ensures that we get the
@@ -90,9 +91,9 @@ time $t$, and we only keep the last position of each pathline.
 
 Let's do this for three particles.
 =#
-traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
-traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
-traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
+traj1 = compute_trajectory(u,v,y,(-2,t))
+traj2 = compute_trajectory(u,v,y,(-1.75,t))
+traj3 = compute_trajectory(u,v,y,(-1.5,t))
 #!jl trajectories!(traj1,label="Particle path τ = -2")
 #!jl trajectories!(traj2,label="Particle path τ = -1.75")
 #!jl trajectories!(traj3,label="Particle path τ = -1.5")

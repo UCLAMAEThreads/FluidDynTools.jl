@@ -72,10 +72,10 @@ function simulate_flow(unit_sources, Δslist, n̂, other_elements; tracer_start 
 
     Cp = 1 .- dotproduct.(us,us) #/dotproduct(U∞,U∞)
 
-    tx, ty = compute_trajectories((other_elements,sources),tracer_start,Tmax,Δt=Δt)
+    traj = compute_trajectories((other_elements,sources),tracer_start,Tmax,Δt=Δt)
 
 
-    sources, us, Cp, tx, ty
+    sources, us, Cp, traj
 end
 
 function surface_fluid_velocity(targets,sources,other_elements,n̂,Δslist)
