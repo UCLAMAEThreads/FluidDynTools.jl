@@ -113,9 +113,10 @@ Bessel function comes up in some problems in physics, particularly in waves in
 circular geometries. Let's suppose we wish to plot the '2nd-order Bessel function
 of the first kind', $J_2(y)$.
 
-In Julia, we can load the `SpecialFunctions` package for this:
+In Julia, this is in the `SpecialFunctions` package, which is loaded inside
+of FluidDynTools.jl. We can import it this way:
 =#
-using SpecialFunctions
+import FluidDynTools.SpecialFunctions: besselj
 #-
 f(x) = besselj(2,x)
 #-
