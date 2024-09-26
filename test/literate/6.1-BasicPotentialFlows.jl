@@ -36,8 +36,8 @@ $$ u_\theta = \dfrac{1}{r} \dfrac{\partial \phi}{\partial \theta} = -\dfrac{\par
 # ### Set up the module
 using FluidDynTools
 #-
-using PotentialFlow
-using ViscousFlow
+using FluidDynTools.PotentialFlow
+using FluidDynTools.ViscousFlow
 #-
 #!jl using Plots
 

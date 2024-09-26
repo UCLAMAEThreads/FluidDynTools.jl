@@ -15,8 +15,8 @@ $$\nabla^2\phi_3 = \nabla^2(\phi_1 + \phi_2) = \nabla^2\phi_1 + \nabla^2\phi_2 =
 # ### Set up the module
 using FluidDynTools
 #-
-using PotentialFlow
-using ViscousFlow
+using FluidDynTools.PotentialFlow
+using FluidDynTools.ViscousFlow
 #-
 #!jl using Plots
 

@@ -80,7 +80,7 @@ That's the basic plot. Let's make it look better:
 To make the labels on the axes look a little bit more professional, we can
 use the `LaTeXStrings` package
 =#
-using LaTeXStrings
+#!jl using LaTeXStrings
 #=
 Then, each of the labels can be prefixed with `L`:
 =#

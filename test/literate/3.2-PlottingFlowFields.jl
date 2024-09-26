@@ -10,7 +10,7 @@ an airfoil again.
 # ### Set up the module
 using FluidDynTools
 #-
-using ViscousFlow
+using FluidDynTools.ViscousFlow
 #-
 #!jl using Plots
 
