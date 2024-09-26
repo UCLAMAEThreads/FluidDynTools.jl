@@ -20,7 +20,7 @@ function fs_integrate(h0,p)
 
 
   prob = ODEProblem(fsrhs!,u0,ηspan,p)
-  sol = solve(prob,Tsit5(),reltol=1e-12,abstol=1e-15)
+  sol = OrdinaryDiffEq.solve(prob,Tsit5(),reltol=1e-12,abstol=1e-15)
 
   resid = sol[2,end] - gL
 

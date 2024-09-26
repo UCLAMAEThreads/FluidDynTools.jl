@@ -1,3 +1,5 @@
+import ILMPostProcessing: compute_trajectory
+
 
 """
     compute_trajectory(elements,X₀::Vector,Tmax[,Δt=0.001])
@@ -7,7 +9,7 @@ argument `elements` is a potential flow `Element` type or group of `Element` typ
 `Tmax` is the final integration time, and `Δt` is the time step size. The output is the solution
 structure for the `OrdinaryDiffEq` package.
 """
-function compute_trajectory(elements, X₀::Vector{S}, Tmax; Δt=DEFAULT_DT) where S <: Real
+function compute_trajectory(elements, X₀::Vector{S}, Tmax; Δt=ILMPostProcessing.DEFAULT_DT,alg=ILMPostProcessing.DEFAULT_ALG,kwargs...) where S <: Real
 
   function vfcn!(dR,R,p,t)
     dR_complex = induce_velocity(R[1]+im*R[2], elements, t)
@@ -16,8 +18,9 @@ function compute_trajectory(elements, X₀::Vector{S}, Tmax; Δt=DEFAULT_DT) whe
     return dR
   end
 
-  sol = _solve_trajectory(vfcn!,X₀,Tmax,Δt)
-  return sol
+  u0 = ILMPostProcessing._prepare_initial_conditions(X₀)
+  sol = ILMPostProcessing._solve_trajectory(vfcn!,X₀,Tmax,Δt,alg;kwargs...)
+  return Trajectories(sol)
 
 end
 
@@ -31,15 +34,15 @@ and time step are provided as `Tmax` and `Δt`. The output is a tuple of arrays
 of the x and y coordinates of the trajectories. Each column of these
 arrays corresponds to a single tracer history.
 """
-function compute_trajectories(elements, tracer_start::Vector{<:Number}, Tmax; Δt=DEFAULT_DT)
+function compute_trajectories(elements, tracer_start::Vector{<:Number}, Tmax; Δt=ILMPostProcessing.DEFAULT_DT,alg=ILMPostProcessing.DEFAULT_ALG,kwargs...)
 
    tracer_x = []
    tracer_y = []
    for z0 in tracer_start
-       sol = compute_trajectory(elements,[real(z0),imag(z0)],Tmax,Δt=Δt)
-       xy = transpose(hcat(sol.u...))
-       push!(tracer_x,xy[:,1])
-       push!(tracer_y,xy[:,2])
+       traj = compute_trajectory(elements,[real(z0),imag(z0)],Tmax;Δt=Δt,alg=alg,kwargs...)
+       xj, yj = traj[1]
+       push!(tracer_x,xj)
+       push!(tracer_y,yj)
    end
    x = hcat(tracer_x...)
    y = hcat(tracer_y...)

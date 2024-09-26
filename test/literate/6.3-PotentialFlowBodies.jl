@@ -177,10 +177,10 @@ with complex coordinates:
 zstart = collect(-3.0 .+ range(-3,3,length=30)*im)
 
 Tmax = 20
-tx, ty = compute_trajectories((fs,sources),zstart,Tmax,Δt=0.01);
+traj = compute_trajectories((fs,sources),zstart,Tmax,Δt=0.01);
 
 
-#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
 #!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400), title = "Streamlines")
 #!jl plot!(sources, markersize = 2, color = :RdBu)
 
@@ -267,9 +267,9 @@ the `other_elements` argument:
 =#
 U∞ = 1.0+0im
 other_elements = Freestreams.Freestream(U∞)
-sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements)
+sources, us, Cp, traj = simulate_flow(unit_sources, Δslist, n̂, other_elements)
 
-#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
 #!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
 #!jl plot!(sources, markersize = 2, color = :RdBu)
 
@@ -321,8 +321,8 @@ the uniform flow by 5 degrees:
 α = 5*π/180
 U∞ = 1.0*exp(im*α)
 other_elements = Freestreams.Freestream(U∞)
-sources, us0, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(-3 .+ im*range(-1,0.5,length=31)));
-#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+sources, us0, Cp, traj = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(-3 .+ im*range(-1,0.5,length=31)));
+#!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
 #!jl                xlim = (-1, 1), ylim = (-0.5, 0.5), size = (600, 600), ratio=1)
 #!jl plot!(sources, markersize = 2, color = :RdBu)
 
@@ -354,9 +354,9 @@ U∞ = 1.0*exp(im*5*π/180)
 Γ = -0.583
 
 other_elements = (Freestreams.Freestream(U∞),Vortex.Point(0+0im,Γ))
-sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(-3 .+ im*range(-1,0.5,length=31)));
+sources, us, Cp, traj = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(-3 .+ im*range(-1,0.5,length=31)));
 
-#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+#!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
 #!jl                xlim = (-1, 1), ylim = (-0.5, 0.5), size = (600, 600))
 #!jl plot!(sources, markersize = 2, color = :RdBu,ratio=1)
 
@@ -426,16 +426,16 @@ unit_sources = Source.Point.(targets, 1.0);
 # With $U_\infty$ going downward:
 U∞ = 0.0-im
 other_elements = Freestreams.Freestream(U∞)
-sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(range(-3,3,length=31) .+ 3im),Δt = 0.0025)
-#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+sources, us, Cp, traj = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(range(-3,3,length=31) .+ 3im),Δt = 0.0025)
+#!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
 #!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
 #!jl plot!(unit_sources, markersize = 2, color = :RdBu)
 
 # With $U_\infty$ from the side:
 U∞ = 1.0+0im
 other_elements = Freestreams.Freestream(U∞)
-sources, us, Cp, tx, ty = simulate_flow(unit_sources, Δslist, n̂, other_elements)
-#!jl plot(tx, ty, color = colorant"black", xlabel = L"x", ylabel = L"y",
+sources, us, Cp, traj = simulate_flow(unit_sources, Δslist, n̂, other_elements)
+#!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
 #!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
 #!jl plot!(sources, markersize = 2, color = :RdBu)
 
