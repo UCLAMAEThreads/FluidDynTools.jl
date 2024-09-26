@@ -118,12 +118,12 @@ convert the polar coordinates into Cartesian:
 
 $$x = r\cos\theta,\qquad y = r\sin\theta$$
 =#
-xs(Θ;k=1) = rs(Θ;k=k)*cos(Θ)
-ys(Θ;k=1) = rs(Θ;k=k)*sin(Θ)
+xs2(Θ;k=1) = rs(Θ;k=k)*cos(Θ)
+ys2(Θ;k=1) = rs(Θ;k=k)*sin(Θ)
 
 #-
 Θ = range(0,2π,length=201)
 #!jl plot(xlim=(-2,2),ylim=(-2,2),ratio=1)
-#!jl plot!(xs.(Θ,k=1),ys.(Θ,k=1),color=:black)
-#!jl plot!(xs.(Θ,k=1.5),ys.(Θ,k=1.5),color=:black)
-#!jl plot!(xs.(Θ,k=0.5),ys.(Θ,k=0.5),color=:black)
+#!jl plot!(xs2.(Θ,k=1),ys2.(Θ,k=1),color=:black)
+#!jl plot!(xs2.(Θ,k=1.5),ys2.(Θ,k=1.5),color=:black)
+#!jl plot!(xs2.(Θ,k=0.5),ys2.(Θ,k=0.5),color=:black)
