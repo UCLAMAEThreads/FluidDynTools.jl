@@ -52,7 +52,7 @@ stream = compute_streamline(u,v,rake,(0,4),t);
 #=
 Plot the streamlines:
 =#
-#!jl trajectories(stream,color=:black)
+#!jl plot(stream,color=:black)
 
 #=
 So the velocity field generally progresses from left to right, but exhibits a wavy behavior.
@@ -72,14 +72,13 @@ streakline longer, how should we change `τmin`?
 y = [0.0,0.0]
 t = 0.0
 streak = compute_streakline(u,v,y,t);
-xstreak, ystreak = streak[1]
 
 #=
 Let's plot the streakline. The use of `ratio=1` ensures that we get the
 correct aspect ratio of the plot. The scatter plot places the injection point
 on the plot.
 =#
-#!jl plot(xstreak,ystreak,ratio=1,legend=:bottomleft,label="Streakline")
+#!jl plot(streak,ratio=1,legend=:bottomleft,label="Streakline")
 #!jl scatter!([y[1]],[y[2]],label="Injection point")
 
 #=
@@ -94,9 +93,9 @@ Let's do this for three particles.
 traj1 = compute_trajectory(u,v,y,(-2,t))
 traj2 = compute_trajectory(u,v,y,(-1.75,t))
 traj3 = compute_trajectory(u,v,y,(-1.5,t))
-#!jl trajectories!(traj1,label="Particle path τ = -2")
-#!jl trajectories!(traj2,label="Particle path τ = -1.75")
-#!jl trajectories!(traj3,label="Particle path τ = -1.5")
+#!jl plot(traj1,label="Particle path τ = -2")
+#!jl plot!(traj2,label="Particle path τ = -1.75")
+#!jl plot!(traj3,label="Particle path τ = -1.5")
 
 #=
 Notice how the paths are just straight lines. But each one ends at a
@@ -105,16 +104,16 @@ an unsteady flow field, let's make a movie of this over a range of time:
 =#
 
 #!jl @gif for t in range(-1.5,4,length=40)
-#!jl    xstreak, ystreak = compute_streakline(u,v,y,t,τmin=-4,Δttraj=0.01)
+#!jl    streak = compute_streakline(u,v,y,t,τmin=-4,Δttraj=0.01)
 #!jl    traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
 #!jl    traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
 #!jl    traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
 #!jl
-#!jl    plot(xstreak,ystreak,ratio=1,legend=:bottomleft,label="Streakline",xlim=(-5,8),ylim=(-6,6))
+#!jl    plot(streak,ratio=1,legend=:bottomleft,label="Streakline",xlim=(-5,8),ylim=(-6,6))
 #!jl    scatter!([y[1]],[y[2]],label="Injection point")
-#!jl    trajectories!(traj1,label="Particle path τ = -2")
-#!jl    trajectories!(traj2,label="Particle path τ = -1.75")
-#!jl    trajectories!(traj3,label="Particle path τ = -1.5")
+#!jl    plot!(traj1,label="Particle path τ = -2")
+#!jl    plot!(traj2,label="Particle path τ = -1.75")
+#!jl    plot!(traj3,label="Particle path τ = -1.5")
 #!jl end
 
 #=
