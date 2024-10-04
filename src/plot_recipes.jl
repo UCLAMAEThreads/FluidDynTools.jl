@@ -60,6 +60,7 @@ end
     aspect_ratio := 1
     ylims --> (-0.5,0.5)
     title := "Particle trajectory"
+    idxs := [pnum]
     traj
   end
 
