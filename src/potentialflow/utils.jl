@@ -49,7 +49,7 @@ dotproduct(a::Number, b::Number) = real(conj(a)*b)
 
 
 # setup and solution of system of equations
-function simulate_flow(unit_sources, Δslist, n̂, other_elements; tracer_start = collect(-3.0 .+ range(-3,3,length=31)*im), Tmax = 20.0, Δt = 0.01)
+function simulate_flow(unit_sources, Δslist, n̂, other_elements; tracer_start = collect(-3.0 .+ range(-3,3,length=31)*im), Trange = (0.0,20.0), dt = 0.01)
 
     # locations at which we enforce no flow through
     targets = PotentialFlow.Elements.position.(unit_sources)
@@ -72,7 +72,7 @@ function simulate_flow(unit_sources, Δslist, n̂, other_elements; tracer_start 
 
     Cp = 1 .- dotproduct.(us,us) #/dotproduct(U∞,U∞)
 
-    traj = compute_trajectories((other_elements,sources),tracer_start,Tmax,Δt=Δt)
+    traj = compute_trajectories((other_elements,sources),tracer_start,Trange,dt=dt)
 
 
     sources, us, Cp, traj

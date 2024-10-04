@@ -62,7 +62,7 @@ if GROUP == "All" || GROUP == "Literate"
       global file_str = "$file"
       global body = :(begin include(joinpath($root,$file)) end)
       endswith(file,".jl") && startswith(file,r"[0-9]") && @mysafetestset file_str body
-      #endswith(file,".jl") && startswith(file,r"6.3") && @mysafetestset file_str body
+      #endswith(file,".jl") && startswith(file,r"3.1.2") && @mysafetestset file_str body
 
     end
   end
@@ -73,7 +73,7 @@ if GROUP == "Notebooks"
 
   for (root, dirs, files) in walkdir(litdir)
     for file in files
-      #endswith(file,".jl") && startswith(file,r"0.1") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
+      #endswith(file,".jl") && startswith(file,r"3") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
       endswith(file,".jl") && startswith(file,r"[0-9]") && Literate.notebook(joinpath(root, file),outputdir,preprocess = replace_includes)
     end
   end
