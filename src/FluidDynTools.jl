@@ -61,6 +61,7 @@ module FluidDynTools
 
   include("plot_recipes.jl")
 
+  import ViscousFlow: RigidBodyMotion
 
   include("viscousflow/fileio.jl")
 

@@ -104,10 +104,10 @@ an unsteady flow field, let's make a movie of this over a range of time:
 =#
 
 #!jl @gif for t in range(-1.5,4,length=40)
-#!jl    streak = compute_streakline(u,v,y,t,τmin=-4,Δttraj=0.01)
-#!jl    traj1 = compute_trajectory(u,v,y,(-2,t),Δt=0.01)
-#!jl    traj2 = compute_trajectory(u,v,y,(-1.75,t),Δt=0.01)
-#!jl    traj3 = compute_trajectory(u,v,y,(-1.5,t),Δt=0.01)
+#!jl    streak = compute_streakline(u,v,y,t,τmin=-4)
+#!jl    traj1 = compute_trajectory(u,v,y,(-2,t))
+#!jl    traj2 = compute_trajectory(u,v,y,(-1.75,t))
+#!jl    traj3 = compute_trajectory(u,v,y,(-1.5,t))
 #!jl
 #!jl    plot(streak,ratio=1,legend=:bottomleft,label="Streakline",xlim=(-5,8),ylim=(-6,6))
 #!jl    scatter!([y[1]],[y[2]],label="Injection point")

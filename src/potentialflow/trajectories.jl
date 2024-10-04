@@ -1,15 +1,16 @@
 import ILMPostProcessing: compute_trajectory
+import PotentialFlow: VortexSystem
 
 
 """
-    compute_trajectory(elements,X₀::Vector,Tmax[,Δt=0.001])
+    compute_trajectory(elements,X₀::Vector,Trange::Tuple[,dt=0.01])
 
 Calculate the trajectory of a particle with initial location `X₀`. The
 argument `elements` is a potential flow `Element` type or group of `Element` types.
-`Tmax` is the final integration time, and `Δt` is the time step size. The output is the solution
-structure for the `OrdinaryDiffEq` package.
+`Trange` is a tuple of the initial and finalintegration times, and `dt` is the time step size. The output is a
+`Trajectory` type.
 """
-function compute_trajectory(elements, X₀::Vector{S}, Tmax; Δt=ILMPostProcessing.DEFAULT_DT,alg=ILMPostProcessing.DEFAULT_ALG,kwargs...) where S <: Real
+function compute_trajectory(elements::VortexSystem, X₀::Vector{S}, Trange::Tuple; dt=ILMPostProcessing.DEFAULT_DT,alg=ILMPostProcessing.DEFAULT_ALG,kwargs...) where S <: Real
 
   function vfcn!(dR,R,p,t)
     dR_complex = induce_velocity(R[1]+im*R[2], elements, t)
@@ -18,8 +19,9 @@ function compute_trajectory(elements, X₀::Vector{S}, Tmax; Δt=ILMPostProcessi
     return dR
   end
 
+  _dt, _autodt = ILMPostProcessing._standardize_time_step(Trange...,dt)
   u0 = ILMPostProcessing._prepare_initial_conditions(X₀)
-  sol = ILMPostProcessing._solve_trajectory(vfcn!,X₀,Tmax,Δt,alg;kwargs...)
+  sol = ILMPostProcessing._solve_trajectory(vfcn!,u0,Trange,_dt,alg,Val(_autodt);kwargs...)
   return Trajectories(sol)
 
 end
@@ -34,12 +36,12 @@ and time step are provided as `Tmax` and `Δt`. The output is a tuple of arrays
 of the x and y coordinates of the trajectories. Each column of these
 arrays corresponds to a single tracer history.
 """
-function compute_trajectories(elements, tracer_start::Vector{<:Number}, Tmax; Δt=ILMPostProcessing.DEFAULT_DT,alg=ILMPostProcessing.DEFAULT_ALG,kwargs...)
+function compute_trajectories(elements::VortexSystem, tracer_start::Vector{<:Number}, Trange::Tuple; dt=ILMPostProcessing.DEFAULT_DT,alg=ILMPostProcessing.DEFAULT_ALG,kwargs...)
 
    tracer_x = []
    tracer_y = []
    for z0 in tracer_start
-       traj = compute_trajectory(elements,[real(z0),imag(z0)],Tmax;Δt=Δt,alg=alg,kwargs...)
+       traj = compute_trajectory(elements,[real(z0),imag(z0)],Trange;dt=dt,alg=alg,kwargs...)
        xj, yj = traj[1]
        push!(tracer_x,xj)
        push!(tracer_y,yj)

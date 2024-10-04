@@ -175,8 +175,8 @@ with complex coordinates:
 # a bunch of points along the left side of the obstacle
 zstart = collect(-3.0 .+ range(-3,3,length=30)*im)
 
-Tmax = 20
-traj = compute_trajectories((fs,sources),zstart,Tmax,Δt=0.01);
+Trange = (0.0,20.0)
+traj = compute_trajectories((fs,sources),zstart,Trange);
 
 
 #!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
@@ -425,7 +425,7 @@ unit_sources = Source.Point.(targets, 1.0);
 # With $U_\infty$ going downward:
 U∞ = 0.0-im
 other_elements = Freestreams.Freestream(U∞)
-sources, us, Cp, traj = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(range(-3,3,length=31) .+ 3im),Δt = 0.0025)
+sources, us, Cp, traj = simulate_flow(unit_sources, Δslist, n̂, other_elements, tracer_start = collect(range(-3,3,length=31) .+ 3im),dt = 0.0025)
 #!jl plot(traj, color = colorant"black", xlabel = L"x", ylabel = L"y",
 #!jl                xlim = (-3, 3), ylim = (-3, 3), size = (400, 400))
 #!jl plot!(unit_sources, markersize = 2, color = :RdBu)
