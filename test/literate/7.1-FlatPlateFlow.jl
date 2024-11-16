@@ -120,10 +120,9 @@ $$\delta(x) \propto \sqrt{\nu x/U_e(x)}$$
 
 This is very similar to the Rayleigh problem, except that time is replaced
 by the time-like quantity $x/U_e(x)$ -- approximately the time required to travel
-from the leading edge to distance $x$ downstream. By convention, we stick
-a factor of 2 in this:
+from the leading edge to distance $x$ downstream:
 =#
-δ(x,Ue,ν) = √(2*ν*x/Ue)
+δ(x,Ue,ν) = √(ν*x/Ue)
 
 #=
 Another observation:
