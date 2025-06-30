@@ -214,23 +214,20 @@ curl!(vel,ψ,cache)
 #!jl plot!(vel.u,cache,levels=[0],color=:red,xlim=(-2,2),ylim=(-2,2)) # x component in red
 #!jl plot!(vel.v,cache,levels=[0],color=:blue) # y component in red
 #=
-We can find the zeros of the stagnation points by looking for the minima of $|\mathbf{u}|^2$.
+We can find the zeros of the stagnation points by looking for the zeros of $(u,v)$.
 For this, we will use the `NLsolve` package:
 =#
 using NLsolve
 #=
-This calculates $|\mathbf{u}|^2$ on the grid.
+Now we create interpolatable fields of $u$ and $v$
 =#
-umagsq = magsq(vel);
+u_fcn, v_fcn = interpolatable_field(vel,g);
 #=
-Now we create an interpolatable field of |\mathbf{u}|^2
-=#
-umagsq_fcn = interpolatable_field(umagsq,g);
-#=
-`nlsolve` needs a function that evaluates |\mathbf{u}|^2 at any point.
+`nlsolve` needs a function that evaluates $(u,v)$ at any point.
 =#
 function f!(F,x)
-    F[1] = umagsq_fcn(x[1],x[2])
+    F[1] = u_fcn(x[1],x[2])
+    F[2] = v_fcn(x[1],x[2])
 end
 
 #=
